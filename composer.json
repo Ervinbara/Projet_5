@@ -1,0 +1,19 @@
+{
+    "name": "ebara/projet_5",
+    "description": "Projet 5 openclassrooms",
+    "authors": [
+        {
+            "name": "Ervin Bara",
+            "email": "ervinbara17@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.7"
+    }, 
+    "files.associations": {
+        "*.html": "twig"
+    },
+    "emmet.includeLanguages": {
+        "twig": "html"
+    }
+}
