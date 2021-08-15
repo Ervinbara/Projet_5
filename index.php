@@ -1,31 +1,15 @@
 <?php
 
 use Twig\Environment;
-use controllers\HomeController;
-// require 'controllers/HomeController.php';
+use App\Controllers\HomeController;
 
 require 'vendor/autoload.php';
 // Route par défault
-$default = 'home';                    
-$action = $_GET['where'] ?? $default;  
-
-// A déplacer dans une classe
-// $loader = new \Twig\Loader\FilesystemLoader('templates');
-
-// $twig = new Environment($loader, [
-
-//     'cache' => false,
-
-// ]);
-
-$homeController = new HomeController();
-
+$action = $_GET['where'] ?? 'home';  
 
 switch ($action) {
     case 'home':
-        // echo $twig->render('home.html.twig', ['text' => [
-        //     'name' => 'Ervin'
-        // ]]);
+        $homeController = new HomeController();
         $homeController->index();
         break;
 

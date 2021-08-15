@@ -15,5 +15,10 @@
     },
     "emmet.includeLanguages": {
         "twig": "html"
+    }, 
+    "autoload":{
+        "psr-4":{
+            "App\\":"src"
+        }
     }
 }

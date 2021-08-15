@@ -24,24 +24,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'ece81d773743c95bc417b0c3b4ccece19c8600d5',
     'name' => 'ebara/projet_5',
   ),
   'versions' => 
   array (
     'ebara/projet_5' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'ece81d773743c95bc417b0c3b4ccece19c8600d5',
     ),
     'symfony/polyfill-ctype' => 
     array (
