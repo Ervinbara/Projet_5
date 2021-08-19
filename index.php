@@ -14,17 +14,16 @@ switch ($action) {
         break;
 
     case 'allPosts':
-        // http://localhost:8000/?where=allPosts
-        // echo $twig->render('all_posts.html.twig', ['text' => []
-        // ]);
-        // $homeController->allPostsView();
+        $homeController = new HomeController();
+        $homeController->allPostsView();
         break;
 
     case 'detailPost':
         
         break;
     case 'addPost':
-        
+        $homeController = new HomeController();
+        $homeController->addPost();
         break;
     case 'modifyPost':
         

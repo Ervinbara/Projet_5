@@ -1,6 +1,7 @@
 {% extends "template_base.html.twig" %}
 
 {% block content %}
-Hola
-
+    {% for article in articles %}
+        {{article.titre}} <br>
+    {% endfor %}
 {% endblock %}
