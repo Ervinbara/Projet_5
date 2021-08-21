@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\UserManager;
 use App\Models\AdminManager;
 use App\Factories\TwigFactory;
 
@@ -34,4 +35,20 @@ class HomeController extends TwigFactory
         ]);
 
     }
+
+    function create_account()
+    {
+        if (!empty($_POST) && isset($_POST['forminscription'])) {
+            $userManager = new UserManager();
+
+            $username = trim(htmlspecialchars($_POST['username']));
+            // $email = trim(htmlspecialchars($_POST['email']));
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+            $userManager->new_account([$username,$password]);
+        }
+
+        return $this->render('register.html.twig', []);
+    }
+
 }

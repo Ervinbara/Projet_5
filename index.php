@@ -34,4 +34,8 @@ switch ($action) {
     case 'logout':
 
         break;
+    case 'registration':
+        $homeController = new HomeController();
+        $homeController->create_account();
+        break;
 }

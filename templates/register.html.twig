@@ -2,5 +2,22 @@
 
 
 {% block content %}
-    Crée un compte
+    <form action="?where=registration" method="POST" >
+        <h2>Création de compte</h2>
+        <p>Username</p>
+        <label for="username"></label>
+        <input type="text" placeholder="Votre Pseudo" id="username" name="username">
+        <p>Email</p>
+        <label for="mail"></label>
+        <input type="email" placeholder="Votre email" id="email" name="email">
+        <p>Password</p>
+        <label for="password"></label>
+        <input  type="password" placeholder="password" id="password" name="password">
+        <p>Same Password</p>
+        <label for="password2"></label>
+        <input type="password" placeholder="retaper password" id="password2" name="password2">
+        <br/><br/>
+        <input type="submit" value="inscription" name="forminscription" id="forminscription"/>
+        <a href="?where=login">Login</a>
+    </form>
 {% endblock %}

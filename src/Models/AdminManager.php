@@ -11,7 +11,7 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
 
-        $sql = 'INSERT INTO articles (titre, contenu, creation_date) VALUES (?, ?, NOW())';
+        $sql = 'INSERT INTO articles (title, content, creation_date) VALUES (?, ?, NOW())';
 
         $req = $db->prepare($sql);
         $req->execute(array($titre, $contenu));
