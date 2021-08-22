@@ -11,10 +11,10 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
 
-        $sql = 'INSERT INTO articles (title, content, creation_date) VALUES (?, ?, NOW())';
+        $sql = 'INSERT INTO articles (title, content, creation_date) VALUES (:title, :content, NOW())';
 
         $req = $db->prepare($sql);
-        $req->execute(array($titre, $contenu));
+        $req->execute(array(':title' => $titre, ':content' => $contenu));
         return $req;
     }
 

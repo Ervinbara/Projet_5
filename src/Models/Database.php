@@ -6,11 +6,15 @@ use PDO;
 
 class Database
 {
+    private static $db = null;
 
-    protected function dbConnect()
+    
+    protected function dbConnect():PDO
     {
-        $db = new PDO('mysql:host=localhost;dbname=projet_5;charset=utf8', 'root', '');
-        return $db;
+        if(self::$db === null){
+            self::$db = new PDO('mysql:host=localhost;dbname=projet_5;charset=utf8', 'root', '');
+        }
+        return self::$db;
     }  
 
 }

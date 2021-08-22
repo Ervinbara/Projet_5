@@ -41,7 +41,9 @@ class HomeController extends TwigFactory
         if (!empty($_POST) && isset($_POST['forminscription'])) {
             $userManager = new UserManager();
 
-            $username = trim(htmlspecialchars($_POST['username']));
+            // var_dump($_POST);
+            // exit;
+            $username = trim($_POST['username']);
             // $email = trim(htmlspecialchars($_POST['email']));
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
