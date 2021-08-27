@@ -2,5 +2,11 @@
 
 
 {% block content %}
-    Ajout/Modification d'un post
+    <div class="container">
+        <form method="POST" action="?where=addPost">
+            <input type="text" name="titre" placeholder="Titre" /><br />
+            <textarea id="post" name="contenu" placeholder="Contenu de l'article"></textarea><br />
+            <input type="submit" value="Poster"/>
+        </form>
+     </div>
 {% endblock %}

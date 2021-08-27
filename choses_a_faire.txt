@@ -1,0 +1,4 @@
+1 ) Continuer sur le visuel
+
+2 ) Réorganiser les fichiers de templates. 
+    - Dans templates : admin, user, ...

@@ -2,6 +2,7 @@
 
 use Twig\Environment;
 use App\Controllers\HomeController;
+use App\Controllers\AdminController;
 
 require 'vendor/autoload.php';
 // Route par défault
@@ -22,11 +23,12 @@ switch ($action) {
         
         break;
     case 'addPost':
-        $homeController = new HomeController();
-        $homeController->addPost();
+        $adminController = new AdminController();
+        $adminController->addPost();
         break;
-    case 'modifyPost':
-        
+    case 'administration':
+        $adminController = new AdminController();
+        $adminController->index();
         break;
     case 'login':
         

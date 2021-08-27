@@ -2,14 +2,8 @@
 
 
 {% block content %}
-    Bonjour, je me présente je suis {{name}}
-
-     <div class="container">
-        <form method="POST" action="?where=addPost">
-            <input type="text" name="titre" placeholder="Titre" /><br />
-            <textarea id="post" name="contenu" placeholder="Contenu de l'article"></textarea><br />
-            <input type="submit" value="Poster"/>
-        </form>
-     </div>
-
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="../assets/banner.css"/>
+    {% endblock %}
+    <div class="header-banner"></div> {#Contient l'image de la banniere #}
 {% endblock %}

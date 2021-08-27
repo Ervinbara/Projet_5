@@ -19,7 +19,6 @@ class HomeController extends TwigFactory
     {
         $adminManager = new AdminManager();
         $articles = $adminManager->getAllArticles();
-        // ddd($articles);
         return $this->render('all_posts.html.twig', [
             'articles' => $articles
         ]);
@@ -30,7 +29,7 @@ class HomeController extends TwigFactory
         $adminManager = new AdminManager();
         $adminManager->add($_POST['titre'], $_POST['contenu']);
 
-        return $this->render('home.html.twig', [
+        return $this->render('editPost.html.twig', [
             'name' => 'Ervin'
         ]);
 
