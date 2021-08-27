@@ -2,3 +2,4 @@
 
 2 ) Réorganiser les fichiers de templates. 
     - Dans templates : admin, user, ...
+3) 
