@@ -2,5 +2,14 @@
 
 
 {% block content %}
-    Connection
+    <div class="container">
+        <form method="POST" action="?where=login">
+            <p>Pseudo</p>
+            {# <input type="text" name="Pseudo" placeholder="Pseudo" /><br /> #}
+            <input type="text" placeholder="Entrez votre pseudo" id="username" name="username" /><br />
+            <p>Password</p>
+            <input  type="password" placeholder="password" id="password" name="password">
+            <input type="submit" value="Connexion"  name="formLogin" id="formLogin"/>
+        </form>
+     </div>
 {% endblock %}

@@ -1,43 +1,36 @@
 <?php
 
 use Twig\Environment;
+use App\Routing\Router;
 use App\Controllers\HomeController;
 use App\Controllers\AdminController;
+use App\Controllers\LoginController;
+use App\Controllers\ArticleController;
+use App\Controllers\ArticlesController;
+use App\Controllers\EditArticleController;
+use App\Controllers\RegistrationController;
 
 require 'vendor/autoload.php';
-// Route par défault
-$action = $_GET['where'] ?? 'home';  
 
-switch ($action) {
-    case 'home':
-        $homeController = new HomeController();
-        $homeController->index();
-        break;
+$router = new Router();
+$router->register(HomeController::class);
+$router->register(ArticlesController::class);
+$router->register(ArticleController::class);
+$router->register(EditArticleController::class);
+$router->register(AdminController::class);
+$router->register(RegistrationController::class);
+$router->register(LoginController::class);
 
-    case 'allPosts':
-        $homeController = new HomeController();
-        $homeController->allPostsView();
-        break;
 
-    case 'detailPost':
-        
-        break;
-    case 'addPost':
-        $adminController = new AdminController();
-        $adminController->addPost();
-        break;
-    case 'administration':
-        $adminController = new AdminController();
-        $adminController->index();
-        break;
-    case 'login':
-        
-        break;
-    case 'logout':
+$controller = $router->find_controller();
 
-        break;
-    case 'registration':
-        $homeController = new HomeController();
-        $homeController->create_account();
-        break;
-}
+print($controller->process());
+
+
+// switch ($action) {        
+//     case 'logout':
+//         break;
+//     case 'connexion':
+//         break;
+//     case 'addPost':
+//         break;

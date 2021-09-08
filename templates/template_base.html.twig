@@ -25,9 +25,20 @@
         <li class="nav-item">
           <a href="?where=allPosts" class="nav-link">Articles</a>
         </li>
-        <li class="nav-item">
-          <a href="?where=registration" class="nav-link">Inscription</a>
-        </li>
+        
+        {# Si un utilisateur est connecté #}
+        {% if not app.user %}
+          <li class="nav-item">
+            <a href="?where=registration" class="nav-link">Inscription</a>
+          </li>
+        
+          <li class="nav-item">
+            <a href="?where=login" class="nav-link">Connexion</a>
+          </li>
+        {% endif %}
+
+        {# A ajouter une condition si l'utilisateur connecté et l'admin pour afficher ou
+        le laisser visible et faire une vérification aprés et redirigé si il le faut #}
         <li class="nav-item">
           <a href="?where=administration" class="nav-link">Administration</a>
         </li>

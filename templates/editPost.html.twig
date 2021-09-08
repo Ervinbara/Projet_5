@@ -2,6 +2,8 @@
 
 
 {% block content %}
+{# TODO : A voir comment récupérer les variables de session  #}
+{% if app.session.get('username')  == 'Ervin' %}
     <div class="container">
         <form method="POST" action="?where=addPost">
             <input type="text" name="titre" placeholder="Titre" /><br />
@@ -9,4 +11,7 @@
             <input type="submit" value="Poster"/>
         </form>
      </div>
+{% else %}
+    <p>Bonjour<p/>    
+{% endif %}
 {% endblock %}

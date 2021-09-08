@@ -25,5 +25,24 @@ class AdminManager extends Database
         $req->execute(); 
         return $req;
     }
+
+    public function getLastArticles()
+    {
+        $db = $this->dbConnect();
+        $sql = 'SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles ORDER BY creation_date DESC LIMIT 0, 4';
+        $req = $db->prepare($sql);
+        $req->execute();
+        return $req;
+    }
     
+    public function displayPost($postId)
+    {
+        $db = $this->dbConnect();
+        $sql = 'SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles WHERE id = ?';
+        $req = $db->prepare($sql);
+        $req->execute(array($postId));
+        $post = $req->fetch();
+
+        return $post;
+    }
 }
