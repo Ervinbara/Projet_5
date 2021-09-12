@@ -13,7 +13,10 @@ class TwigFactory
         $loader = new FilesystemLoader(__DIR__ . '/../../templates');
         $twig = new Environment($loader, [
             'cache' => false,
+            'debug' => true,
         ]);
+        $twig->addExtension(new \Twig\Extension\DebugExtension());
+        print_r();
         // Renvoi nos données
         echo $twig->render($path,$datas);
     }

@@ -16,13 +16,11 @@ class LoginController extends AbstractController
         if (!empty($_POST) && isset($_POST['formLogin'])) {
             $userManager = new UserManager();
             $connexion = $userManager->login($_POST['username']);
+            
+            $this->kernel->security->loginUser($_POST['username']);
 
-            $_SESSION['username'] = $_POST['username'];
-            // header('location: ?where=login');
+            header('location: ?where=administration');
         }
-        
-        return $this->render('login.html.twig', [
-            'name' => 'Ervin'
-        ]);
+        return $this->render('login.html.twig', []);
     }
 }

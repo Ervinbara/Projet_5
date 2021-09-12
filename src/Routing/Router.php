@@ -9,6 +9,12 @@ class Router{
     
     private $controllers = [];
 
+    private $kernel;
+
+    public function __construct($kernel){
+        $this->kernel = $kernel;
+    }
+
     public function register(string $controller){
         $this->controllers[] = $controller;
     }
@@ -18,7 +24,7 @@ class Router{
 
         foreach ($this->controllers as $controller){
             if ($controller::isroute($action)){
-                return new $controller;
+                return new $controller($this->kernel);
             }
         }
     }

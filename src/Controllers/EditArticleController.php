@@ -14,11 +14,10 @@ class EditArticleController extends AbstractController
 
     public function process():string{
         $adminManager = new AdminManager();
-        $article = $adminManager->displayPost($_GET['id']);
-        // print_r($article);
+        $adminManager->add($_POST['titre'], $_POST['contenu']);
 
-        return $this->render('article_view.html.twig', [
-            "article" => $article
+        return $this->render('editPost.html.twig', [
+            'name' => 'Ervin'
         ]);
     }
 }
