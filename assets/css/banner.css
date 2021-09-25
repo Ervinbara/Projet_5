@@ -1,0 +1,108 @@
+.body { padding-top: 100px; }
+header{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+}
+.navbar{
+    margin-top: 5px;
+    padding: 20px 0;
+}
+
+/* Mettre une image... */
+.navbar-brand{
+    color: rgb(0, 0, 0)!important;
+    font-weight: 800;
+}
+
+.nav-item{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link:hover,
+.navbar-light .navbar-nav .nav-item.active .nav-link{
+    background: rgb(138, 138, 138);
+    color: rgb(255, 255, 255);
+    border-radius: 5%;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link{
+    color: rgb(255, 255, 255);
+    padding: 5px 15px;
+}
+
+.banner{
+    position: relative;
+    background: url('../../images/banner.jpg');
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    padding: 250px 0 200px;
+
+}
+
+.navbar-light .navbar-toggler{
+    border: none;
+    color: white;
+    border: 2px solid black;
+    border-radius: 0;
+    outline: none;
+    background: cadetblue;
+    border-radius: 15%;
+}
+
+.banner h2{
+   margin: 0;
+   padding: 0;
+   font-size: 2.8em;
+   font-weight: 1000;
+   color: white;
+   text-transform: uppercase; 
+}
+
+.banner p{
+    margin: 1em 0 0;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    color: white;
+}
+
+@media (max-width: 970px){
+   #navbarSupportedContent{
+       background: rgb(0, 0, 0);
+   }
+  }
+/* 
+  .nav-link {
+    --spacing: 1em;
+    text-decoration: none!important;
+    color: white;
+    display: inline-block;
+    padding: calc(var(--spacing) / 2) var(--spacing);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-link:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--spacing);
+    right: var(--spacing);
+    height: 2px;
+    background: currentColor;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+  }
+  
+  .nav-link:hover::after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  } */

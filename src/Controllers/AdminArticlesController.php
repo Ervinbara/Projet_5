@@ -6,19 +6,17 @@ use App\Models\UserManager;
 use App\Models\AdminManager;
 use App\Routing\AbstractController;
 
-class HomeController extends AbstractController
+class AdminArticlesController extends AbstractController
 {
     public static function isroute(string $action):bool{
-        return $action === 'home';
+        return $action === 'adminArticles';
     }
 
     public function process():string{
         $adminManager = new AdminManager();
-        $articles = $adminManager->getLastArticles();
-        return $this->render('home.html.twig', [
-            'articles' => $articles,
-            'name' => 'Ervin'
+        $articles = $adminManager->getAllArticles();
+        return $this->render('admin_articles.html.twig', [
+            'articles' => $articles
         ]);
     }
 }
-

@@ -2,8 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-    <title>Bara Ervin : Présentation</title>
+  {% block title %}{% endblock %}
       <meta name=viewport content="width=device-width, initial-scale=1"> 
+      <link rel="stylesheet" type="text/css" href="../assets/css/banner.css"/>
+      <link rel="stylesheet" type="text/css" href="../assets/css/footer.css"/>
+      <script type="text/javascript" src="../assets/js/navbar_scroll.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/litera/bootstrap.min.css">
       <link href="https://fonts.googleapis.com/css?family=Notable|Roboto" rel="stylesheet">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> 
@@ -12,55 +17,126 @@
 </head>
 
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="?where=home">LOGO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a href="?where=home" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="?where=allPosts" class="nav-link">Articles</a>
-        </li>
-        
-        {# Si un utilisateur est connecté #}
-        {% if not app.security.isConnected %}
-          <li class="nav-item">
-            <a href="?where=registration" class="nav-link">Inscription</a>
-          </li>
-        
-          <li class="nav-item">
-            <a href="?where=login" class="nav-link">Connexion</a>
-          </li>
-        {% endif %}
-        
-        {% if app.security.isConnected %}
-        <li class="nav-item">
-          <a href="?where=logout" class="nav-link">Déconnexion</a>
-        </li>
 
-        <li class="nav-item">
-          {{app.security.username}}
-        </li>
-        {% endif %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-lg-auto">
+      <li class="nav-item">
+            <a href="?where=home" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="?where=allPosts" class="nav-link">Articles</a>
+          </li>
+          
+          {# Si un utilisateur est connecté #}
+          {% if not app.security.isConnected %}
+            <li class="nav-item">
+              <a href="?where=registration" class="nav-link">Inscription</a>
+            </li>
+          
+            <li class="nav-item">
+              <a href="?where=login" class="nav-link">Connexion</a>
+            </li>
+          {% endif %}
+          
 
-        {# {% if app.user.session.get('username') same as('Ervin') %}
-        <li class="nav-item">
-          <a href="?where=administration" class="nav-link">Administration</a>
-        </li> #}
-        {# {% endif %} #}
-      </ul>
-    </div>
-  </nav>
+          {% if app.security.isConnected and app.security.username is same as('Ervin') %}
+          <li class="nav-item">
+            <a href="?where=administration" class="nav-link">Administration</a>
+          </li> 
+          {% endif %}
+          
+          {% if app.security.isConnected %}
+          <li class="nav-item">
+            <a href="?where=logout" class="nav-link">Déconnexion</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link">{{app.security.username}}</a>
+          </li>
+          {% endif %}
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>
 
-{% block content %}
+{% block banner %}
+{% endblock %}
+
+<div class="container body">
+  {% block content %}
+  {% endblock %}
+</div>
+
+{% block footer %}
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6>About</h6>
+            <p class="text-justify">LePetitDev <i></i></p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Other links</h6>
+            <ul class="footer-links">
+              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
+              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
+              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
+              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
+              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>Navigation</h6>
+            <ul class="footer-links">
+              <li><a href="?where=home">Homepage</a></li>
+              <li><a href="?where=allPosts">Articles</a></li>
+              <li><a href="?where=registration">Registration</a></li>
+              <li><a href="?where=login">Connexion</a></li>
+              {% if app.security.isConnected and app.security.username is same as('Ervin') %}
+              <li><a href="?where=administration">Administration</a></li> 
+              {% endif %}
+              {# <li><a href="?where=home">About us</a></li> #}
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by 
+         <a href="#">Ervin Bara</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>   
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+  
 {% endblock %}
 
 {% block javascripts %}
+        <script type="text/javascript" src="../assets/js/navbar_scroll.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {% endblock %}

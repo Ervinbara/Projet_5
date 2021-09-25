@@ -6,9 +6,9 @@
 {# Faire un form plus propre  #}
 {% block content %}
      <div class="container">
-        <form method="POST" action="?where=editArticle">
+        <form method="POST" action="?where=addPost" enctype="multipart/form-data">
         {# modifier si on modifie l'article #}
-            <h2>Modifier un article</h2>
+            <h2>Ajouter un article</h2>
 
             <div class="form-group">
                 <label>Titre</label>
@@ -27,7 +27,7 @@
 
             <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}" />
 
-            <input class="btn btn-primary" type="submit" value="Poster"/>
+            <input class="btn btn-primary" type="submit" value="Poster" name="addPost" id="addPost"/>
 
         </form>
     </div>

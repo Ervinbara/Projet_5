@@ -1,0 +1,53 @@
+{% extends "template_base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="../assets/css/navbar_other_page.css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 ">
+            <h1 class="m-0 font-weight-bold centered-text" id="Matches">Liste des articles</h1>
+        </div>
+        <div class="card-body row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th id="Name" scope="col">Date</th>
+                    <th id="Name" scope="col">Titre</th>
+                    <th id="Name" scope="col">Auteur</th>
+                    <th id="Name" class="btn-add" scope="col">
+                        <a href="?where=addPost">
+                            <button  type="button" class="btn btn-primary">Ajouter un article</button>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.creation_date|e }}</td>
+                        <td>{{ article.title|e }}</td>
+                        <td>{{ article.author|e }}</td>
+                        <td>
+                            <div class="admin_action">
+                                <form method="POST" action="?where=editArticle">
+                                    <input name="username" value="{{article.title}}" type="hidden">
+                                    {# <input name="email" value="{{user.email}}" type="hidden"> #}
+                                    <input name="id" value="{{article.id}}" type="hidden">
+                                    <a href="?where=editArticle&id={{article.id}}" class="btn btn-success">Modifier</a>
+                                </form>
+
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

@@ -14,7 +14,7 @@ abstract class AbstractController{
         $this->kernel = $kernel;
     }
 
-    // A quoi sert isroute ?
+    // A quoi sert isroute ? Si une route est trouver ça renvoi True sinon False
     public abstract static function isroute(string $action):bool;
 
     public abstract function process():string;

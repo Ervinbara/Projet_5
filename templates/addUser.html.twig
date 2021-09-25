@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container">
-    <form action="?where=registration" method="POST">
+    <form action="?where=addUser" method="POST">
     
     <h2>Création de compte</h2>
     <div class="form-group">
@@ -21,13 +21,20 @@
         <label>Mot de passe</label>
         <input  type="password" placeholder="password" id="password" name="password" class="form-control">
     </div>
+
     <div class="form-group">
-        <label>Confirmation du mot de passe</label>
-        <input type="password" class="form-control" id="password2" placeholder="Confirmer le mot de passe">
+        <label class="inputForm" for="exampleInputName1">Rôle</label>
+        <select name="role" id="role">
+            <option value="">--Choix du rôle--</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+        </select> 
     </div>
-    
-    <input class="btn btn-primary" type="submit" value="Inscription" name="forminscription" id="forminscription"/>
-    <a href="?where=login">Login</a>
+
+    <input class="btn btn-primary" type="submit" value="Cree le compte" name="addUserForm" id="addUserForm"/>
+    <a href="?where=listUsers">Retour</a>
+    </form>
+
     </form>
 
 </div>

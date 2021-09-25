@@ -4,12 +4,16 @@
 namespace App\Framework;
 
 use App\Routing\Router;
+use App\Framework\Kernel;
 
 class Security
 {
+    /**
+     * @var Kernel
+     */
     private $kernel;
 
-    public function __construct($kernel){
+    public function __construct(Kernel $kernel){
         session_start();
         $this->kernel = $kernel;
     }

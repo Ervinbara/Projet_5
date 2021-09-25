@@ -7,14 +7,14 @@ use App\Models\AdminManager;
 use App\Routing\AbstractController;
 
 class EditArticleController extends AbstractController
-{
+{ 
     public static function isroute(string $action):bool{
-        return $action === 'addPost';
+        return $action === 'editArticle';
     }
 
     public function process():string{
         $adminManager = new AdminManager();
-        $adminManager->add($_POST['titre'], $_POST['contenu']);
+        $adminManager->modify($_POST['titre'], $_POST['contenu'], $_POST['author'], $_POST['image']);
 
         return $this->render('editPost.html.twig', [
             'name' => 'Ervin'
