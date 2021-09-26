@@ -9,7 +9,7 @@ use App\Routing\AbstractController;
 class ArticleController extends AbstractController
 {
     public static function isroute(string $action):bool{
-        return $action === 'displayArticle';
+        return $action === 'displayPost';
     }
 
     public function process():string{
@@ -17,7 +17,7 @@ class ArticleController extends AbstractController
         $article = $adminManager->displayPost($_GET['id']);
         // print_r($article);
 
-        return $this->render('article_view.html.twig', [
+        return $this->render('default/article_view.html.twig', [
             "article" => $article
         ]);
     }

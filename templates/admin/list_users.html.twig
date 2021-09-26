@@ -1,0 +1,61 @@
+{% extends "admin_template_base.html.twig" %}
+
+{# Faire un form plus propre  #}
+{% block content %}
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br>
+    <li class="dashboard"><a href="?where=administration">Dashboard</a></li> 
+    <li class="users"><a href="?where=home">Retour au site</a></li>
+    <li class="logout warn"><a href="?where=logout">Déconnexion</a></li>
+  </ul>
+</header>
+
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 ">
+            <h1 class="m-0 font-weight-bold centered-text" id="Matches">Liste des Utilisateurs</h1>
+        </div>
+        <div class="card-body row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th id="Name" scope="col">Pseudo</th>
+                    <th id="Name" scope="col">Email</th>
+                    <th id="Name" scope="col">Role</th>
+                    <th id="Name" class="btn-add" scope="col">
+                        <a href="?where=addUser">
+                            <button  type="button" class="btn btn-primary">Ajouter</button>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                 {% for user in users %}
+                    <tr>
+                        <td>{{ user.username|e }}</td>
+                        <td>{{ user.email|e }}</td>
+                        <td>{{ user.role|e }}</td>
+                        <td>
+                            <div class="admin_action">
+                                <form method="POST" action="?where=editUser">
+                                    <input name="username" value="{{user.username}}" type="hidden">
+                                    {# <input name="email" value="{{user.email}}" type="hidden"> #}
+                                    <input name="id" value="{{user.id}}" type="hidden">
+                                    <a href="?where=editUser&id={{user.id}}" class="btn btn-success">Modifier</a>
+                                    <a href="?where=deleteUser&id={{user.id}}" class="btn btn-danger" onclick="return confirm('Voulez vous vraiment supprimer {{user.username}} ?');">Supprimer</a>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

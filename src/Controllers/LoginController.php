@@ -21,6 +21,6 @@ class LoginController extends AbstractController
 
             header('location: ?where=administration');
         }
-        return $this->render('login.html.twig', []);
+        return $this->render('default/login.html.twig', []);
     }
 }

@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+.about{
+    display: flex;
+}
 
 .container {
     /* max-width: 100%; */

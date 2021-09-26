@@ -1,0 +1,50 @@
+{% extends "admin_template_base.html.twig" %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="../assets/css/detail_admin.css"/>
+{% endblock %}
+{# Faire un form plus propre  #}
+{% block content %}
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br>
+    <li class="dashboard"><a href="?where=administration">Dashboard</a></li>
+    <li class="users"><a href="?where=home">Retour au site</a></li>
+    <li class="logout warn"><a href="?where=logout">Déconnexion</a></li>
+  </ul>
+</header>
+
+<div class="container">
+    <form action="?where=addUser" method="POST">
+    
+    <h2>Création de compte</h2>
+    <div class="form-group">
+        <label>Adresse email</label>
+        <input type="email" placeholder="Votre email" id="email" name="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Pseudo</label>
+        <input type="text" placeholder="Votre Pseudo" id="username" name="username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Mot de passe</label>
+        <input  type="password" placeholder="password" id="password" name="password" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label class="inputForm" for="exampleInputName1">Rôle</label>
+        <select name="role" id="role">
+            <option value="">--Choix du rôle--</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+        </select> 
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Cree le compte" name="addUserForm" id="addUserForm"/>
+    <a href="?where=listUsers">Retour</a>
+    </form>
+
+    </form>
+
+</div>
+{% endblock %}

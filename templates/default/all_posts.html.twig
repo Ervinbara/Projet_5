@@ -1,0 +1,28 @@
+{% extends "template_base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="../assets/css/navbar_other_page.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/article.css"/>
+
+{% endblock %}
+
+{% block content %}
+    <h2>Retrouvez l'ensemble de nos articles</h2>
+        <div class="container">
+        {% for article in articles %}
+        <div class="grid">
+            <div class="card">
+                <div class="card_img">
+                    <img src="./images/articles/{{article.image}}">
+                </div>
+                <div class="card_body">
+                    <h2 class="card_title">{{article.title}}</h2>
+                    <p>{{article.content}}</p>
+                    <p class="card_author">by <a href="#" class="author_link">{{article.author}}</a></p>
+                    <a href="index.php?where=displayArticle&amp;id={{article.id}}" class="read_more">Voir plus</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

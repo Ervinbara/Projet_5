@@ -34,6 +34,6 @@ class RegistrationController extends AbstractController
             }
         }
 
-        return $this->render('register.html.twig', []);
+        return $this->render('default/register.html.twig', []);
     }
 }

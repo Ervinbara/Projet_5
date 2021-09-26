@@ -1,0 +1,44 @@
+{% extends "admin_template_base.html.twig" %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="../assets/css/detail_admin.css"/>
+{% endblock %}
+{# Faire un form plus propre  #}
+{% block content %}
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br>
+    <li class="dashboard"><a href="?where=administration">Dashboard</a></li>
+    <li class="users"><a href="?where=home">Retour au site</a></li>
+    <li class="logout warn"><a href="?where=logout">Déconnexion</a></li>
+  </ul>
+</header>
+
+<div class="container">
+    <form method="POST">
+    
+    <h2>Modifier ce compte</h2>
+    <div class="form-group">
+        <label>Adresse email</label>
+        <input type="email" placeholder="Votre email" id="email" name="email" class="form-control" value ="{{user.email}}">
+    </div>
+    <div class="form-group">
+        <label>Pseudo</label>
+        <input type="text" placeholder="Votre Pseudo" id="username" name="username" class="form-control" value ="{{user.username}}">
+    </div>
+
+    {# <input type="HIDDEN" id="id" name="id" value="{{user.id}}"/> #}
+
+    <div class="form-group">
+        <label class="inputForm" for="exampleInputName1">Rôle</label>
+        <select name="role" id="role">
+            <option value="ADMIN" {% if user.role == 'ADMIN' %}selected{% endif %}>ADMIN</option>
+            <option value="USER" {% if user.role == 'USER' %}selected{% endif %}>USER</option>
+        </select> 
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Modifier" name="editUserForm" id="editUserForm"/>
+    <a href="?where=listUsers">Retour</a>
+    </form>
+</div>
+{% endblock %}

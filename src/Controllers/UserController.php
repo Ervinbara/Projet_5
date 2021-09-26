@@ -15,7 +15,7 @@ class UserController extends AbstractController
     public function process():string{
         $userManager = new UserManager();
         $users = $userManager->getUsers();
-        return $this->render('list_users.html.twig', [
+        return $this->render('admin/list_users.html.twig', [
             'users' => $users
         ]);
     }

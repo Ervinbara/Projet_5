@@ -1,0 +1,56 @@
+{% extends "admin_template_base.html.twig" %}
+
+{% block content %}
+
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br>
+    <li class="dashboard"><a href="?where=administration">Dashboard</a></li>
+    <li class="users"><a href="?where=home">Retour au site</a></li>
+    <li class="logout warn"><a href="?where=logout">Déconnexion</a></li>
+  </ul>
+</header>
+
+<nav role='navigation'>
+  <ul class="main">
+    <li class="edit"><a href="?where=adminListPosts">Gestion des articles</a></li>
+    <li class="write"><a href="?where=addPost">Nouvel article</a></li>
+    <li class="comments"><a href="#">Commentaires signaler</a></li>
+    <li class="users"><a href="?where=listUsers">Gestion utilisateurs</a></li>
+    <li class="write"><a href="?where=addUser">Nouvel utilisateur</a></li>
+  </ul>
+</nav>
+
+<main role="main">
+  <section class="panel important">
+    <div class="container">
+        <form method="POST" action="?where=addPost" enctype="multipart/form-data">
+        {# modifier si on modifie l'article #}
+            <h2>Ajouter un article</h2>
+
+            <div class="form-group">
+                <label>Titre</label>
+                <input type="text" name="titre" placeholder="Titre" id="titre" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label>Contenu</label>
+                <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control"></textarea> 
+            </div>
+
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image"/>
+            </div>
+
+            <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}"/>
+
+            <input class="btn btn-primary" type="submit" value="Poster" name="addPost" id="addPost"/>
+
+        </form>
+    </div>
+
+</main>
+
+{% endblock %}

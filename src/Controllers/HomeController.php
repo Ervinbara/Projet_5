@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     public function process():string{
         $adminManager = new AdminManager();
         $articles = $adminManager->getLastArticles();
-        return $this->render('home.html.twig', [
+        return $this->render('default/home.html.twig', [
             'articles' => $articles,
             'name' => 'Ervin'
         ]);

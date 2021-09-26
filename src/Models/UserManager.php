@@ -58,6 +58,15 @@ class UserManager extends Database
         return $stmt->fetch();
     }
 
+    public function getUserByUsername(string $username)
+    {
+        $db = $this->dbConnect();
+        $sql = 'SELECT * FROM users WHERE username=:username';
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['username' => $username]);
+        return $stmt->fetch();
+    }
+
     public function updateUser($username, $email, $role, $id)
     {
         $db = $this->dbConnect();

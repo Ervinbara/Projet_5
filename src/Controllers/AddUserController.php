@@ -35,6 +35,6 @@ class AddUserController extends AbstractController
             }
         }
 
-        return $this->render('addUser.html.twig', []);
+        return $this->render('admin/addUser.html.twig', []);
     }
 }

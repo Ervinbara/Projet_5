@@ -15,13 +15,13 @@ class AdminController extends AbstractController
     public function process():string{
         // Si l'administrateur est connecté, il pourra accéder à l'espace administration
         if($_SESSION['username'] === 'Ervin'){
-            return $this->render('administrationPanel.html.twig', [
+            return $this->render('admin/administrationPanel.html.twig', [
                 'username' => $_SESSION['username']
             ]);
         }
         // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
         else{
-            return $this->render('home.html.twig', []);
+            return $this->render('default/home.html.twig', []);
         }
     }
 }

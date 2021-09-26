@@ -15,7 +15,7 @@ class ArticlesController extends AbstractController
     public function process():string{
         $adminManager = new AdminManager();
         $articles = $adminManager->getAllArticles();
-        return $this->render('all_posts.html.twig', [
+        return $this->render('default/all_posts.html.twig', [
             'articles' => $articles
         ]);
     }
