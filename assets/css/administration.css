@@ -56,6 +56,11 @@ header[role="banner"] .utilities li {
 header[role="banner"] .utilities li a {
   padding: 0.7em;
   display: block;
+  color: black;
+  text-decoration: none;
+}
+header[role="banner"] .utilities li a:hover{
+  color: #942a00;
 }
 
 /* header */
@@ -335,8 +340,9 @@ td {
     display: inline-block;
   }
   header[role="banner"] .utilities li a {
-    padding: 0.5em 1em;
+    padding: 0.5em 1em;    
   }
+
 
   nav[role="navigation"] {
     position: fixed;

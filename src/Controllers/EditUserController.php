@@ -15,15 +15,11 @@ class EditUserController extends AbstractController
     public function process():string{
         $userManager = new UserManager();
         // Récup l'user que l'on modifie de par son id
-        // print_r($_GET);
         $user = $userManager->getUser($_GET['id']);
 
-        if (!empty($_POST) && isset($_POST['editUserForm'])) {
-            // print_r($_POST);
-            
+        if (!empty($_POST) && isset($_POST['editUserForm'])) {            
             // Faire une vérif si le compte existe déjà
             $checkUsername = $userManager->getUserByUsername($_POST['username']);
-            
             // Renvoi 1, l'username existe déjà en base
             if($checkUsername !== false && $checkUsername['id'] !== $user['id']){
                 header('location: ?where=editUser');
@@ -37,6 +33,11 @@ class EditUserController extends AbstractController
                 $userManager->updateUser($username,$email,$role,$id);
                 header('location: ?where=listUsers');
             }
+        }
+
+        if (!empty($_POST) && isset($_POST['deleteUser'])) {
+            $userManager->deleteUser($_GET['id']);
+            header('location: ?where=listUsers');
         }
 
         return $this->render('admin/editUser.html.twig', [

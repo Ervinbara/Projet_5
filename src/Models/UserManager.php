@@ -71,10 +71,22 @@ class UserManager extends Database
     {
         $db = $this->dbConnect();
         $sql = ('UPDATE users SET username = :username , email = :email , role = :role WHERE id = :id');
-        $parameters = ['username' => $username,'email' => $email,'role' => $role, 'id' => $id, ];
+        $parameters = ['username' => $username,'email' => $email,'role' => $role, 'id' => $id];
         
         $stmt = $db->prepare($sql);
         $stmt->execute($parameters);
         return $stmt->fetch();
      }
+
+    /** Delete a user
+     * @param int $userId
+     */
+    public function deleteUser(int $userId): void
+    {   
+        $db = $this->dbConnect();
+        $sql = 'DELETE FROM users WHERE id = :userId';
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['userId' => $userId]);
+    }
+        
 }

@@ -42,7 +42,10 @@ class AddArticleController extends AbstractController
                 }
             }
 
-            $adminManager->add($_POST['titre'], $_POST['contenu'], $_POST['author'], $image);
+            $adminManager->add($_POST['titre'], $_POST['chapo'],$_POST['contenu'], $_POST['author'], $image);
+            // print_r($_POST);
+            // exit();
+            return $this->render('admin/administrationPanel.html.twig', []);
         }
         return $this->render('admin/addPost.html.twig', [
             'name' => 'Ervin'

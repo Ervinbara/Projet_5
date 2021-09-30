@@ -15,29 +15,35 @@
 </header>
 
      <div class="container">
-        <form method="POST" action="?where=editArticle">
+        <form method="POST">
         {# modifier si on modifie l'article #}
             <h2>Modifier un article</h2>
 
             <div class="form-group">
                 <label>Titre</label>
-                <input type="text" name="titre" placeholder="Titre" id="titre" class="form-control"/>
+                <input type="text" name="titre" placeholder="Titre" id="titre" class="form-control" value="{{post.title}}"/>
+            </div>
+
+            <div class="form-group">
+                <label>Chapô</label>
+                <input type="text" name="chapo" placeholder="Résumer" id="chapo" class="form-control" value="{{post.chapo}}"/>
             </div>
 
             <div class="form-group">
                 <label>Contenu</label>
-                <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control"></textarea> 
+                <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control" >{{post.content}}</textarea> 
             </div>
 
             <div class="form-group">
                 <label>Image</label>
-                <input type="file" name="image"/>
+                <input value="{{post.image}}" type="file" name="image"/>
             </div>
 
             <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}" />
 
-            <input class="btn btn-primary" type="submit" value="Poster"/>
+            <input class="btn btn-primary" type="submit" value="Modifier" name="updatePost" id="updatePost"/>
+            <input class="btn btn-danger" type="submit" value="Supprimer" name="deletePost" id="deletePost"/>
 
-        </form>
+        </form> 
     </div>
 {% endblock %}
