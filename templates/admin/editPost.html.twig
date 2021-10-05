@@ -15,7 +15,7 @@
 </header>
 
      <div class="container">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
         {# modifier si on modifie l'article #}
             <h2>Modifier un article</h2>
 
@@ -33,17 +33,18 @@
                 <label>Contenu</label>
                 <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control" >{{post.content}}</textarea> 
             </div>
-
+ 
             <div class="form-group">
                 <label>Image</label>
-                <input value="{{post.image}}" type="file" name="image"/>
+                <input type="file" id="image" name="image"/>
             </div>
 
             <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}" />
 
             <input class="btn btn-primary" type="submit" value="Modifier" name="updatePost" id="updatePost"/>
             <input class="btn btn-danger" type="submit" value="Supprimer" name="deletePost" id="deletePost"/>
-
+ 
+        <a href="?where=adminListPosts">Retour</a>
         </form> 
     </div>
 {% endblock %}

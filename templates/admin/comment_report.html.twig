@@ -1,0 +1,56 @@
+{% extends "admin_template_base.html.twig" %}
+
+{# Faire un form plus propre  #}
+{% block content %}
+<header role="banner">
+  <h1>Admin Panel</h1>
+  <ul class="utilities">
+    <br>
+    <li class="dashboard"><a href="?where=administration">Dashboard</a></li> 
+    <li class="users"><a href="?where=home">Retour au site</a></li>
+    <li class="logout warn"><a href="?where=logout">Déconnexion</a></li>
+  </ul>
+</header>
+
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 ">
+            <h1 class="m-0 font-weight-bold centered-text" id="Matches">Commentaire signaler</h1>
+        </div>
+        <div class="card-body row">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th id="Name" scope="col">Pseudo</th>
+                    <th id="Name" scope="col">Commentaire</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                 {% for comment in commentReport %}
+                    <tr>
+                        <td>{{ comment.author|e }}</td>
+                        <td>{{ comment.comment|e }}</td>
+                        <td>
+                            <div class="admin_action">
+                                <form method="POST">
+                                    <input name="delete_comment_id" value="{{comment.id}}" type="hidden">
+                                    
+                                    <input class="btn btn-primary" type="submit" value="Modifier" name="validComment" id="updatePost"/>
+                                    <input class="btn btn-danger" type="submit" value="Supprimer" name="deleteComment" id="deletePost"/>
+
+                                    {# <input class="btn btn-primary" type="submit" value="Supprimer" name="deleteUser" id="deleteUser"/> #}
+                                    {# <a href="?where=deleteUser&id={{user.id}}" class="btn btn-danger" onclick="return confirm('Voulez vous vraiment supprimer {{user.username}} ?');">Supprimer</a> #}
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

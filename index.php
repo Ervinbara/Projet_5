@@ -16,6 +16,8 @@ use App\Controllers\AddArticleController;
 use App\Controllers\EditArticleController;
 use App\Controllers\RegistrationController;
 use App\Controllers\AdminArticlesController;
+use App\Controllers\CommentReportController;
+use App\Controllers\ManageCommentController;
 
 
 require 'vendor/autoload.php';
@@ -26,6 +28,8 @@ $kernel->router->register(HomeController::class);
 $kernel->router->register(ArticlesController::class);
 $kernel->router->register(ArticleController::class);
 $kernel->router->register(AdminArticlesController::class);
+$kernel->router->register(CommentReportController::class);
+$kernel->router->register(ManageCommentController::class);
 $kernel->router->register(EditArticleController::class);
 $kernel->router->register(AddArticleController::class);
 $kernel->router->register(AddUserController::class);

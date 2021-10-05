@@ -12,11 +12,25 @@ class EditArticleController extends AbstractController
         return $action === 'editPost';
     }
  
-    public function process():string{
+    public function process():string{ 
         $adminManager = new AdminManager();
-        $post = $adminManager->displayPost($_GET['id']);
+        $post = $adminManager->getPost($_GET['id']);
+
         if (!empty($_POST) && isset($_POST['updatePost'])) {
-            $adminManager->modify($_POST['titre'], $_POST['chapo'], $_POST['contenu'], $_POST['author'], $_POST['image']);
+            if (isset($_FILES['image']) && !empty($_FILES['image']['name'])){
+                $image = $_FILES['image'];
+                $titre = $_POST['titre'];
+                $image = $adminManager->addImage($image, $titre);
+            }
+
+            $titre = $_POST['titre'];
+            $chapo = $_POST['chapo'];
+            $contenu = $_POST['contenu'];
+            $author = $_POST['author']; 
+
+            $id = $_GET['id'];
+
+            $adminManager->modify($titre, $chapo, $contenu, $author, $image , $id);
             header('location: ?where=adminListPosts');
         }
 

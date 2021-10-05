@@ -21,18 +21,6 @@
 {# Contenu page d'accueil #}
 {% block content %}
     <div class="container">
-        <h2>Présentation</h2>
-        <div class="about">
-            <div>
-                <p> hzefihbfcbzefcbzeybfuyizebhfiuhzruvbuizbrvhuzrb fhujzfh jzf hjcf jzh fjeznh fjhze ufihzurefjnurgvfbierbverb</p>
-            </div>
-            <div>
-                <figure>
-                  <img src="#" alt="Logo">
-                </figure>
-            </div>
-        </div>
-
         <h2>Dernières actualités</h2>
         <div class="grid">
         {% for article in articles %}
@@ -43,50 +31,11 @@
                 <div class="card_body">
                     <h2 class="card_title">{{article.title}}</h2>
                     <p>{{article.content}}</p>
-                    <p class="card_author">by <a href="#" class="author_link">{{article.author}}</a></p>
-                    <a href="index.php?where=displayPost&amp;id={{article.id}}" class="read_more">Voir plus</a>
+                    <p class="card_author author_link">Auteur : {{article.author}} <br/>le {{article.creation_date_fr}}</p>
+                    <a class="read_more" href="index.php?where=displayPost&amp;id={{article.id}}">Voir plus</a>
                 </div>
             </div>
         {% endfor %}
-        </div>
-    </div>
-
-
-
-        <div class="grid">
-            <div class="card">
-                <div class="card_img">
-                    <img src="./images/articles/{{article.image}}">
-                </div>
-                <div class="card_body">
-                    <h2 class="card_title">Get yourself motivated</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum porro, illum totam nostrum sit delectus nisi sint magni perspiciatis adipisci?</p>
-                    <p class="card_author">by <a href="#" class="author_link">sofiullah chowdhury</a></p>
-                    <a href="#" class="read_more">Read article</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card_img">
-                    <img src="https://images.unsplash.com/photo-1606787619248-f301830a5a57?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="">
-                </div>
-                <div class="card_body">
-                    <h2 class="card_title">Learn the art of cooking</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid optio quidem, est labore earum reprehenderit quibusdam id iure delectus nemo.</p>
-                    <p class="card_author">by <a href="#" class="author_link">sofiullah chowdhury</a></p>
-                    <a href="#" class="read_more">Read article</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card_img">
-                    <img src="https://images.unsplash.com/photo-1587772247228-20c9f67a327b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="">
-                </div>
-                <div class="card_body">
-                    <h2 class="card_title">Get your freedom</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid optio quidem, est labore earum reprehenderit quibusdam id iure delectus nemo.</p>
-                    <p class="card_author">by <a href="#" class="author_link">sofiullah chowdhury</a></p>
-                    <a href="#" class="read_more">Read article</a>
-                </div>
-            </div>
         </div>
     </div>
 {% endblock %}

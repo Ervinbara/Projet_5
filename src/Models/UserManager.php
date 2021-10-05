@@ -11,19 +11,20 @@ class UserManager extends Database
     {
         $db = $this->dbConnect();
         $sql = 'INSERT INTO users(username,password, email, role) VALUES(?,?,?,?)';
-        $req = $db->prepare($sql);
-        return $req->execute($userData);
+        $stmt = $db->prepare($sql);
+        return $stmt->execute($userData);
     }
 
     // Fonction de connexion
     public function login($username){
         $db = $this->dbConnect();
         $sql = 'SELECT id, password, username FROM users WHERE username = :username';
-        $req = $db->prepare($sql);
+        $stmt = $db->prepare($sql);
 
-        $req->execute(array(
+        $stmt->execute(array(
         'username' => $username));
-        $resultat = $req->fetch();
+        $resultat = $stmt->fetch();
+        // return $stmt->fetch();
         
         return $resultat;
    }
@@ -33,9 +34,11 @@ class UserManager extends Database
    public function username_exist($username){
        
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
-        $req->execute(array($username));
-        $user_exist = $req->fetchColumn();
+        $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+        $stmt->execute(['username' => $username]);
+
+        // return $stmt->fetchColumn();
+        $user_exist = $stmt->fetchColumn();
         return $user_exist;
     
     }
@@ -88,5 +91,6 @@ class UserManager extends Database
         $stmt = $db->prepare($sql);
         $stmt->execute(['userId' => $userId]);
     }
+
         
 }

@@ -33,7 +33,7 @@ class EditUserController extends AbstractController
                 $userManager->updateUser($username,$email,$role,$id);
                 header('location: ?where=listUsers');
             }
-        }
+        } 
 
         if (!empty($_POST) && isset($_POST['deleteUser'])) {
             $userManager->deleteUser($_GET['id']);

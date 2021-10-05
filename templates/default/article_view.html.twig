@@ -2,11 +2,46 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="../assets/css/navbar_other_page.css"/>
+    <link rel="stylesheet" type="text/css" href="../assets/css/article.css"/>
 {% endblock %}
 
 {% block content %}
     <div class="card_img">
         <img src="./images/articles/{{article.image}}">
     </div>
+    <div class="card_body">
+        <h2 class="card_title">{{article.title}}</h2>
+        <p>{{article.content}}</p>
+        <p class="card_author author_link">Auteur : {{article.author}} <br/>le {{article.creation_date_fr}}</p>
+    </div>
+
+    <hr>
+ 
+    <h3>Espace commentaires {{count.nb}}</h3>
+    {# Comment section #}
+    <form method="POST">
+            <div class="form-group">
+                <label>Contenu</label>
+                <textarea id="coms" name="coms" placeholder="Commentaire" class="form-control"></textarea> 
+            </div> 
+            <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}" />
+            <input class="btn btn-primary" type="submit" value="Poster" name="comment" id="comment"/>
+    </form>
+
+    {% for comment in comments %}
+    <div class="comment">
+      <div class='author'>Auteur : {{comment.author}}</div>
+      <div class='comment'>Commentaire : {{comment.comment}}</div>
+      <div class='date'>Le : {{comment.comment_date_fr}}</div>
+
+      <form method="POST">
+        <input type="HIDDEN" id="comment_id" name="comment_id" value="{{comment.id}}" />
+        <input class="btn btn-danger" type="submit" id="report" name="report" value="Signaler" />
+      </form>
+    </div>
+
+    {% endfor %}
+
+  
 {% endblock %}
     
