@@ -2,8 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UserManager;
-use App\Models\AdminManager;
+use App\Models\CommentManager;
 use App\Routing\AbstractController;
 
 class WaitingCommentController extends AbstractController
@@ -13,19 +12,19 @@ class WaitingCommentController extends AbstractController
     }
 
     public function process():string{
-        $adminManager = new AdminManager();
+        $commentManager = new CommentManager();
 
         if (!empty($_POST) && isset($_POST['validComment'])) { 
-            $adminManager->validComment($_POST['comment_id']);
+            $commentManager->validComment($_POST['comment_id']);
             header('location: ?where=waitingComment');
         }
 
         if (!empty($_POST) && isset($_POST['deleteComment'])) { 
-            $adminManager->deleteComment($_POST['comment_id']);
+            $commentManager->deleteComment($_POST['comment_id']);
             header('location: ?where=waitingComment');
         }
 
-        $commentWait = $adminManager->getWaitingComment();
+        $commentWait = $commentManager->getWaitingComment();
         return $this->render('admin/waiting__comments_list.html.twig', [
             'commentWait' => $commentWait 
         ]);

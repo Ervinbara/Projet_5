@@ -2,8 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UserManager;
-use App\Models\AdminManager;
+use App\Models\CommentManager;
 use App\Routing\AbstractController;
 
 class CommentReportController extends AbstractController
@@ -13,15 +12,15 @@ class CommentReportController extends AbstractController
     }
 
     public function process():string{
-        $adminManager = new AdminManager();
-        $commentReport = $adminManager->getCommentReport();
+        $commentManager = new CommentManager();
+        $commentReport = $commentManager->getCommentReport();
 
         if (!empty($_POST) && isset($_POST['deleteComment'])) { 
-            $adminManager->deleteComment($_POST['comment_id']);
+            $commentManager->deleteComment($_POST['comment_id']);
             header('location: ?where=commentReport');
         }
         if (!empty($_POST) && isset($_POST['validComment'])) { 
-            $adminManager->cancelReport($_POST['comment_id']);
+            $commentManager->cancelReport($_POST['comment_id']);
             header('location: ?where=commentReport');
         }
         

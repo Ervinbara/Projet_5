@@ -2,8 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UserManager;
-use App\Models\AdminManager;
+use App\Models\CommentManager;
 use App\Routing\AbstractController;
 
 class ManageCommentController extends AbstractController
@@ -13,9 +12,9 @@ class ManageCommentController extends AbstractController
     }
 
     public function process():string{
-        $adminManager = new AdminManager();
-        $commentReport = $adminManager->countsCommentsReport();
-        $commentWaiting = $adminManager->countsCommentsWaiting();
+        $commentManager = new CommentManager();
+        $commentReport = $commentManager->countsCommentsReport();
+        $commentWaiting = $commentManager->countsCommentsWaiting();
         
         return $this->render('admin/manage_comment.html.twig', [
             'commentReport' => $commentReport,
