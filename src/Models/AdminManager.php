@@ -111,17 +111,25 @@ class AdminManager extends Database
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $stmt = $db->prepare('SELECT id, author,post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :postId ORDER BY comment_date DESC');
+        $stmt = $db->prepare('SELECT id, author,post_id, comment, report, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :postId AND waiting = 0 ORDER BY comment_date DESC');
         $stmt->execute(['postId' => $postId]);
 
         return $stmt->fetchAll();
+    }
+
+    public function getWaitingComment()
+    {
+         $db = $this->dbConnect();
+         $stmt = $db->prepare('SELECT author,id,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE waiting = 1');
+         $stmt->execute();
+         return $stmt;
     }
     
     // Récupère le compte de commentaire en fonction de chaque article
     public function countsComments($postId)
     {
         $db = $this->dbConnect();
-        $sql = 'SELECT COUNT(*) AS nb FROM comments WHERE post_id = :post_id';
+        $sql = 'SELECT COUNT(*) AS nb FROM comments WHERE post_id = :post_id AND waiting = 0';
 
         $stmt = $db->prepare($sql);
         $stmt->execute(['post_id' => $postId]);
@@ -139,6 +147,26 @@ class AdminManager extends Database
       ]);
     }
 
+    public function cancelReport($id_report)
+    {
+          $db = $this->dbConnect();
+          $sql = $db->prepare('UPDATE comments SET report=:report WHERE id =:id');
+          $sql->execute([
+          'report' => 0,
+          'id' => $id_report,
+      ]);
+    }
+
+    public function validComment($id_waiting)
+    {
+          $db = $this->dbConnect();
+          $sql = $db->prepare('UPDATE comments SET waiting=:waiting WHERE id =:id');
+          $sql->execute([
+          'waiting' => 0,
+          'id' => $id_waiting,
+      ]);
+    }
+
     public function getCommentReport()
     {
          $db = $this->dbConnect();
@@ -151,6 +179,17 @@ class AdminManager extends Database
     { 
         $db = $this->dbConnect();
         $sql = 'SELECT COUNT(*) AS nb FROM comments WHERE report = 1';
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+    public function countsCommentsWaiting()
+    { 
+        $db = $this->dbConnect();
+        $sql = 'SELECT COUNT(*) AS nb FROM comments WHERE waiting = 1';
 
         $stmt = $db->prepare($sql);
         $stmt->execute();

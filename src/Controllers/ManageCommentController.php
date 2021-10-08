@@ -15,9 +15,11 @@ class ManageCommentController extends AbstractController
     public function process():string{
         $adminManager = new AdminManager();
         $commentReport = $adminManager->countsCommentsReport();
+        $commentWaiting = $adminManager->countsCommentsWaiting();
         
         return $this->render('admin/manage_comment.html.twig', [
-            'commentReport' => $commentReport
+            'commentReport' => $commentReport,
+            'commentWaiting' => $commentWaiting
         ]);
     }
 }

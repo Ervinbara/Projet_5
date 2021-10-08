@@ -17,7 +17,11 @@ class CommentReportController extends AbstractController
         $commentReport = $adminManager->getCommentReport();
 
         if (!empty($_POST) && isset($_POST['deleteComment'])) { 
-            $adminManager->deleteComment($_POST['delete_comment_id']);
+            $adminManager->deleteComment($_POST['comment_id']);
+            header('location: ?where=commentReport');
+        }
+        if (!empty($_POST) && isset($_POST['validComment'])) { 
+            $adminManager->cancelReport($_POST['comment_id']);
             header('location: ?where=commentReport');
         }
         

@@ -15,7 +15,7 @@
     <div class="card shadow mb-4">
         <!-- Card Header - Dropdown -->
         <div class="card-header py-3 ">
-            <h1 class="m-0 font-weight-bold centered-text" id="Matches">Commentaire signaler</h1>
+            <h1 class="m-0 font-weight-bold centered-text" id="Matches">Commentaire en attente</h1>
         </div>
         <div class="card-body row">
             <table class="table table-bordered">
@@ -28,17 +28,17 @@
                 <tbody>
 
 
-                 {% for comment in commentReport %}
+                 {% for comment in commentWait %}
                     <tr>
                         <td>{{ comment.author|e }}</td>
                         <td>{{ comment.comment|e }}</td>
                         <td>
                             <div class="admin_action">
-                                <form method="POST">
+                                <form method="POST"> 
                                     <input name="comment_id" value="{{comment.id}}" type="hidden">
                                     
                                     <input class="btn btn-primary" type="submit" value="Valider" name="validComment" id="validComment"/>
-                                    <input class="btn btn-danger" type="submit" value="Supprimer" name="deleteComment" id="deletePost"/>
+                                    <input class="btn btn-danger" type="submit" value="Supprimer" name="deleteComment" id="deleteComment"/>
 
                                     {# <input class="btn btn-primary" type="submit" value="Supprimer" name="deleteUser" id="deleteUser"/> #}
                                     
