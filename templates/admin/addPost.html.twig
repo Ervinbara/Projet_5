@@ -20,17 +20,17 @@
 
             <div class="form-group">
                 <label>Titre</label>
-                <input type="text" name="titre" placeholder="Titre" id="titre" class="form-control"/>
+                <input type="text" name="titre" placeholder="Titre" id="titre" class="form-control" required/>
             </div>
 
             <div class="form-group">
                 <label>Chapô</label>
-                <input type="text" name="chapo" placeholder="Résumer" id="chapo" class="form-control"/>
+                <input type="text" name="chapo" placeholder="Résumer" id="chapo" class="form-control" required minlength="6" maxlength="255" />
             </div>
 
             <div class="form-group">
                 <label>Contenu</label>
-                <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control"></textarea> 
+                <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control"  required minlength="20"></textarea> 
             </div>
 
             <div class="form-group">
@@ -38,7 +38,7 @@
                 <input type="file" name="image"/>
             </div>
 
-            <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}" />
+            <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.usernamejde}}" />
 
             <input class="btn btn-primary" type="submit" value="Poster" name="addPost" id="addPost"/>
         

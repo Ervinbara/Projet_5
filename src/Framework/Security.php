@@ -18,17 +18,24 @@ class Security
         $this->kernel = $kernel;
     }
 
-    public function loginUser($username){
-        $_SESSION['username'] = $username;
+    public function setUserConnected($user){
+        $_SESSION['user'] = $user;
     }
+
 
     public function isConnected(){
-        return isset($_SESSION['username']);        
+        return isset($_SESSION['user']);        
     }
 
-    public function username(){
-        return $_SESSION['username'];        
+    public function getUserConnected(){
+        return $_SESSION['user'];        
     }
+
+    public function isAdmin(){
+        return $_SESSION['user']['role'] === 'ADMIN';
+    }
+
+
 
     public function logout(){
         session_unset();

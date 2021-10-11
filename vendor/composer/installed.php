@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ece81d773743c95bc417b0c3b4ccece19c8600d5',
+    'reference' => 'ee11925955e8fd59454899523c5e49b19ee83d31',
     'name' => 'ebara/projet_5',
   ),
   'versions' => 
@@ -18,7 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ece81d773743c95bc417b0c3b4ccece19c8600d5',
+      'reference' => 'ee11925955e8fd59454899523c5e49b19ee83d31',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.5.1',
+      'version' => '6.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dd803df5ad7492e1b40637f7ebd258fee5ca7355',
     ),
     'symfony/polyfill-ctype' => 
     array (

@@ -28,14 +28,14 @@
                         <a href="?where=addPost">
                             <button  type="button" class="btn btn-primary">Ajouter un article</button>
                         </a>
-                    </th>
+                    </th> 
                 </tr>
                 </thead>
                 <tbody>
                 
                 {% for article in articles %}
                     <tr>
-                        <td>{{ article.creation_date|e }}</td>
+                        <td>{{ article.creation_date_fr|e }}</td>
                         <td>{{ article.title|e }}</td>
                         <td>{{ article.author|e }}</td>
                         <td>

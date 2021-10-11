@@ -3,11 +3,15 @@
 namespace App\Routing;
 
 use Twig\Environment;
+use App\Framework\Kernel;
 use Twig\Loader\FilesystemLoader;
 
 
 abstract class AbstractController{
     
+    /**
+     * @var Kernel
+     */
     protected $kernel;
 
     public function __construct($kernel){

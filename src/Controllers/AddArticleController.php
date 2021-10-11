@@ -19,6 +19,12 @@ class AddArticleController extends AbstractController
                 $titre = $_POST['titre'];
                 $image = $adminManager->addImage($image, $titre);
             }
+            // if (isset($_POST['titre']) && !empty($_POST['titre'])) {
+            //     print_r("pas cool");
+            //     exit();
+            // }
+
+
             $adminManager->add($_POST['titre'], $_POST['chapo'],$_POST['contenu'], $_POST['author'], $image);
             header('location: ?where=adminListPosts');
         }

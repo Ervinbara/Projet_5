@@ -39,7 +39,7 @@
                 <input type="file" id="image" name="image"/>
             </div>
 
-            <input type="HIDDEN" id="author" name="author" value="{{app.security.username}}" />
+            <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.username}}" />
 
             <input class="btn btn-primary" type="submit" value="Modifier" name="updatePost" id="updatePost"/>
             <input class="btn btn-danger" type="submit" value="Supprimer" name="deletePost" id="deletePost"/>

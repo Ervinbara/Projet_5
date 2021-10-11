@@ -1,7 +1,5 @@
 <?php
 
-use Twig\Environment;
-use App\Routing\Router;
 use App\Framework\Kernel;
 use App\Controllers\HomeController;
 use App\Controllers\UserController;
@@ -44,13 +42,3 @@ $kernel->router->register(LoginController::class);
 $kernel->router->register(LogoutController::class);
 
 $kernel->process();
-
-
-
-// switch ($action) {        
-//     case 'logout':
-//         break;
-//     case 'connexion':
-//         break;
-//     case 'addPost':
-//         break;

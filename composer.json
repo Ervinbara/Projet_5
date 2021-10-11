@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "twig/twig": "^2.7"
+        "twig/twig": "^2.7",
+        "phpmailer/phpmailer": "^6.5"
     }, 
     "files.associations": {
         "*.html": "twig"

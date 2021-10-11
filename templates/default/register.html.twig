@@ -11,19 +11,19 @@
     <h2>Création de compte</h2>
     <div class="form-group">
         <label>Adresse email</label>
-        <input type="email" placeholder="Votre email" id="email" name="email" class="form-control">
+        <input type="email" placeholder="Votre email" id="email" name="email" class="form-control" required>
     </div>
     <div class="form-group">
         <label>Pseudo</label>
-        <input type="text" placeholder="Votre Pseudo" id="username" name="username" class="form-control">
+        <input type="text" placeholder="Votre Pseudo" id="username" name="username" class="form-control" required minlength="4" maxlength="100">
     </div>
     <div class="form-group">
         <label>Mot de passe</label>
-        <input  type="password" placeholder="password" id="password" name="password" class="form-control">
+        <input  type="password" placeholder="password" id="password" name="password" class="form-control" required minlength="6" maxlength="100">
     </div>
     <div class="form-group">
         <label>Confirmation du mot de passe</label>
-        <input type="password" class="form-control" id="password2" placeholder="Confirmer le mot de passe">
+        <input type="password" class="form-control" id="confirm_password" placeholder="Confirmer le mot de passe" required>
     </div>
     
     <input class="btn btn-primary" type="submit" value="Inscription" name="forminscription" id="forminscription"/>
@@ -31,4 +31,7 @@
     </form>
 
 </div>
+
+
+<script type="text/javascript" src="../assets/js/confirm_password.js"></script>
 {% endblock %}

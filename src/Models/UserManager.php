@@ -15,19 +15,6 @@ class UserManager extends Database
         return $stmt->execute($userData);
     }
 
-    // Fonction de connexion
-    public function login($username){
-        $db = $this->dbConnect();
-        $sql = 'SELECT id, password, username FROM users WHERE username = :username';
-        $stmt = $db->prepare($sql);
-
-        $stmt->execute(array(
-        'username' => $username));
-        $resultat = $stmt->fetch();
-        // return $stmt->fetch();
-        
-        return $resultat;
-   }
 
    // Fonction de vérification : Vérifie si une adresse email ou un pseudo est déjà affilié à un compte
    // TODO : A compléter

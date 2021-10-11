@@ -9,7 +9,11 @@
 <div class="container">
     <form method="POST" action="?where=login">
     <h2>Connexion</h2>
-
+    {% if message is not null %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+    {% endif %}
     <div class="form-group">
         <label>Pseudo</label>
         <input type="text" placeholder="Votre Pseudo" id="username" name="username" class="form-control">

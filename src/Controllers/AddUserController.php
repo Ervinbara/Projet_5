@@ -30,7 +30,7 @@ class AddUserController extends AbstractController
                 $role = $_POST['role'];
                     
                 $userManager->new_account([$username,$password,$email,$role]);
-                header('location: ?where=listUser');
+                header('location: ?where=listUsers');
             }
         }
 

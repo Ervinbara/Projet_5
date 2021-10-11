@@ -7,7 +7,14 @@ use App\Framework\Security;
 
 class Kernel
 {
+    /**
+     * @var Router
+     */
     public $router;
+    
+    /**
+     * @var Security
+     */
     public $security;
 
     public function __construct(){
