@@ -19,7 +19,7 @@
 <header>
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="?where=home"><img src="./images/logo/logo_small.png"></a>
+    <a class="navbar-brand" href="?where=home"><img class="logo" src="./images/logo/logo_small.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -83,17 +83,16 @@
           <div class="col-sm-12 col-md-6">
             <h6>About</h6>
             <p class="text-justify">LePetitDev <i></i></p>
+            <a href="./images/cv.pdf">Lien vers mon cv</a>
           </div>
 
           <div class="col-xs-6 col-md-3">
-            <h6>Other links</h6>
+            <h6>Technologies</h6>
             <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+              <li>Html</li>
+              <li>Css</li>
+              <li>Javascript</li>
+              <li>PHP</li>
             </ul>
           </div>
 
@@ -104,7 +103,7 @@
               <li><a href="?where=allPosts">Articles</a></li>
               <li><a href="?where=registration">Registration</a></li>
               <li><a href="?where=login">Connexion</a></li>
-              {% if app.security.isAdmin %}
+              {% if app.security.isConnected and app.security.isAdmin %}
               <li><a href="?where=administration">Administration</a></li> 
               {% endif %}
               {# <li><a href="?where=home">About us</a></li> #}
@@ -136,7 +135,7 @@
 {% endblock %}
 
 {% block javascripts %}
-        <script type="text/javascript" src="../assets/js/navbar_scroll.js"></script>
+        <script type="text/javascript" src="../assets/js/scroll.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 {% endblock %}

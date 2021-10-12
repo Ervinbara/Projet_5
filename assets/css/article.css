@@ -8,8 +8,11 @@
     display: flex;
 }
 
+#ancre{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
 .container {
-    /* max-width: 100%; */
     margin: 0 auto;
     height: 100%;
 }
@@ -26,7 +29,6 @@
 }
 
 .card {
-    overflow: hidden;
     background-color: #FFF;
     border-radius: 30px;
     text-align: center;
@@ -34,10 +36,15 @@
 
 
 .card_img img {
-    width: 100%;
+    
+    width: 80%;
     height: auto;
     border-radius: 20px;
 }
+
+/* .card_img{
+    text-align: center;
+} */
 
 .card_body {
     padding: 26px 20px 36px 20px;

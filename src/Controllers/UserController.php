@@ -14,8 +14,15 @@ class UserController extends AbstractController
     public function process():string{
         $userManager = new UserManager();
         $users = $userManager->getUsers();
-        return $this->render('admin/list_users.html.twig', [
-            'users' => $users
-        ]);
+
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/list_users.html.twig', [
+                'users' => $users
+            ]);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
     }
 }

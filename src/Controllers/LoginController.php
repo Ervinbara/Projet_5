@@ -13,14 +13,20 @@ class LoginController extends AbstractController
 
     public function process():string{
         $message = NULL;
-
+ 
         if (!empty($_POST) && isset($_POST['formLogin'])) {
             $userManager = new UserManager();
             $user = $userManager->getUserByUsername($_POST['username']);
             if(($user !== false) && (password_verify($_POST['password'], $user['password']))){
                 $this->kernel->security->setUserConnected($user);
-                header('location: ?where=administration');
-                exit();
+                if($user['role'] == 'ADMIN'){
+                    header('location: ?where=administration');
+                    exit();
+                }
+                else{
+                    header('location: ?where=home');
+                    exit();
+                }
                 
             }
             $message = "L'utilisateur n'a pas pu être connecté";

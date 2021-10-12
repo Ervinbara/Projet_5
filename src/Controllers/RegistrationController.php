@@ -12,7 +12,7 @@ class RegistrationController extends AbstractController
     }
 
     public function process():string{
-        
+        $message = NULL;
         if (!empty($_POST) && isset($_POST['forminscription'])) {
             // Faire une vérif si le compte existe déjà
             $userManager = new UserManager();
@@ -20,7 +20,11 @@ class RegistrationController extends AbstractController
             
             // Renvoi 1, l'username existe déjà en base
             if($username_exist) {
-                header('location: ?where=registration');
+                $message = "L'email ou le pseudo est déjà utilisé.";
+                return $this->render('default/register.html.twig', [
+                    'message'=> $message
+                ]);
+                // header('location: ?where=registration');
             }
 
             elseif($username_exist == 0){
@@ -30,6 +34,7 @@ class RegistrationController extends AbstractController
                     
                 $userManager->new_account([$username,$password,$email,"USER"]);
                 header('location: ?where=login');
+                exit();
             }
         }
 

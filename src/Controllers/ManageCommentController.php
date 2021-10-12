@@ -16,9 +16,15 @@ class ManageCommentController extends AbstractController
         $commentReport = $commentManager->countsCommentsReport();
         $commentWaiting = $commentManager->countsCommentsWaiting();
         
-        return $this->render('admin/manage_comment.html.twig', [
-            'commentReport' => $commentReport,
-            'commentWaiting' => $commentWaiting
-        ]);
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/manage_comment.html.twig', [
+                'commentReport' => $commentReport,
+                'commentWaiting' => $commentWaiting
+            ]);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
     }
 }

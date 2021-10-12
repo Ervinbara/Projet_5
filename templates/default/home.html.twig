@@ -10,9 +10,10 @@
     <section class="banner">    
         <div class="container">
             <div class="col-sm-6">
-                <h2>Bienvenue</h2>
-                <p>-------------------------------------------------------</p>
-                <a href="#" class="btn btn-primary">Voir plus</a>
+                <h2>Bienvenu</h2>
+                <p>Ervin Bara, le développeur qu’il vous faut !</p>
+                <a href="#ancre" class="btn btn-primary">Voir plus</a>
+                <a class="btn btn-success" href="./images/cv.pdf">Lien vers mon cv</a>
             </div>
         </div>
     </section>
@@ -20,8 +21,8 @@
 
 {# Contenu page d'accueil #}
 {% block content %}
-    <div class="container">
-        <h2>Dernières actualités</h2>
+    <div class="container scroll-container">
+        <h2 id="ancre">Dernières actualités</h2>
         <div class="grid">
         {% for article in articles %}
             <div class="card">

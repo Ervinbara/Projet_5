@@ -38,7 +38,7 @@ class EditUserController extends AbstractController
             $userManager->deleteUser($_GET['id']);
             header('location: ?where=listUsers');
         }
-
+        
         return $this->render('admin/editUser.html.twig', [
             'user' => $user
         ]);

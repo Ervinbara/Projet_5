@@ -14,8 +14,16 @@ class AdminArticlesController extends AbstractController
     public function process():string{
         $adminManager = new AdminManager();
         $articles = $adminManager->getAllArticles();
-        return $this->render('admin/admin_list_posts.html.twig', [
-            'articles' => $articles
-        ]);
+
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/admin_list_posts.html.twig', [
+                'articles' => $articles
+            ]);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
+        
     }
 }
