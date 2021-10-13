@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'ee11925955e8fd59454899523c5e49b19ee83d31',
+    'reference' => 'b7d7eb13ec8591e7d773ee9f370cde13433cf029',
     'name' => 'ebara/projet_5',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'ee11925955e8fd59454899523c5e49b19ee83d31',
+      'reference' => 'b7d7eb13ec8591e7d773ee9f370cde13433cf029',
     ),
     'phpmailer/phpmailer' => 
     array (
@@ -72,12 +72,12 @@ private static $installed = array (
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v2.14.6',
-      'version' => '2.14.6.0',
+      'pretty_version' => 'v2.14.7',
+      'version' => '2.14.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '27e5cf2b05e3744accf39d4c68a3235d9966d260',
+      'reference' => '8e202327ee1ed863629de9b18a5ec70ac614d88f',
     ),
   ),
 );

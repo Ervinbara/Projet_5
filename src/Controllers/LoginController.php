@@ -16,7 +16,7 @@ class LoginController extends AbstractController
  
         if (!empty($_POST) && isset($_POST['formLogin'])) {
             $userManager = new UserManager();
-            $user = $userManager->getUserByUsername($_POST['username']);
+            $user = $userManager->getUserByUsernameOrEmail($_POST['username']);
             if(($user !== false) && (password_verify($_POST['password'], $user['password']))){
                 $this->kernel->security->setUserConnected($user);
                 if($user['role'] == 'ADMIN'){

@@ -28,18 +28,23 @@
                 <label>Chapô</label>
                 <input type="text" name="chapo" placeholder="Résumer" id="chapo" class="form-control" value="{{post.chapo}}"/>
             </div>
+            
 
             <div class="form-group">
                 <label>Contenu</label>
                 <textarea id="post" name="contenu" placeholder="Contenu de l'article" class="form-control" >{{post.content}}</textarea> 
             </div>
- 
+
+
+            <div class="form-group">
+                <label>Auteur</label>
+                <input type="text" name="author" placeholder="Auteur" id="author" class="form-control" value="{{post.author}}"/>
+            </div>
+
             <div class="form-group">
                 <label>Image</label>
                 <input type="file" id="image" name="image"/>
             </div>
-
-            <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.username}}" />
 
             <input class="btn btn-primary" type="submit" value="Modifier" name="updatePost" id="updatePost"/>
             <input class="btn btn-danger" type="submit" value="Supprimer" name="deletePost" id="deletePost"/>

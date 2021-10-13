@@ -21,15 +21,21 @@
  
     <h3>Espace commentaires {{count.nb}}</h3>
     {# Comment section #}
-    <form method="POST">
-            <div class="form-group">
-                <label>Contenu</label>
-                <textarea id="coms" name="coms" placeholder="Commentaire" class="form-control"></textarea> 
-            </div> 
-            <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.username}}" />
-            <input class="btn btn-primary" type="submit" value="Poster" name="comment" id="comment"/>
-    </form>
-
+    {% if app.security.isConnected %}
+        <form method="POST">
+                <div class="form-group">
+                    <label>Contenu</label>
+                    <textarea id="coms" name="coms" placeholder="Commentaire" class="form-control" required minlength="1" maxlength="450"></textarea> 
+                </div> 
+                <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.username}}" />
+                <input class="btn btn-primary" type="submit" value="Poster" name="comment" id="comment"/>
+        </form>
+    {% else %}
+        <h3>Pour laisser un commentaire, veuillez vous connecter.</h3> 
+        <a href="?where=login">Login</a> <br/>
+        <a href="?where=registration">Pas de compte ?</a>
+    {% endif %}
+ 
     {% for comment in comments %}
     <div class="comment">
       <div class='author'>Auteur : {{comment.author}}</div>
@@ -42,7 +48,9 @@
         {% if comment.report == 1 %}
             <p class="commentReport">Commentaire signaler</p>
         {% else %}
-        <input class="btn btn-danger" type="submit" id="report" name="report" value="Signaler" />
+            {% if app.security.isConnected %}
+            <input class="btn btn-danger" type="submit" id="report" name="report" value="Signaler" />
+            {% endif %}
         {% endif %}
       </form>
     </div>

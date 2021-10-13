@@ -18,11 +18,11 @@ class UserManager extends Database
 
    // Fonction de vérification : Vérifie si une adresse email ou un pseudo est déjà affilié à un compte
    // TODO : A compléter
-   public function username_exist($username){
+   public function username_exist($username, $email){
        
         $db = $this->dbConnect();
-        $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
-        $stmt->execute(['username' => $username]);
+        $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
+        $stmt->execute(['username' => $username, 'email' => $email]);
 
         // return $stmt->fetchColumn();
         $user_exist = $stmt->fetchColumn();
@@ -48,12 +48,12 @@ class UserManager extends Database
         return $stmt->fetch();
     }
 
-    public function getUserByUsername(string $username)
+    public function getUserByUsernameOrEmail(string $username)
     {
         $db = $this->dbConnect();
-        $sql = 'SELECT * FROM users WHERE username=:username';
+        $sql = 'SELECT * FROM users WHERE username=:username OR email=:username';
         $stmt = $db->prepare($sql);
-        $stmt->execute(['username' => $username]);
+        $stmt->execute(['username' => $username, 'email' => $username]);
         return $stmt->fetch();
     }
 

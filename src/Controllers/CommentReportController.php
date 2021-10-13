@@ -24,8 +24,15 @@ class CommentReportController extends AbstractController
             header('location: ?where=commentReport');
         }
         
-        return $this->render('admin/comment_report.html.twig', [
-            'commentReport' => $commentReport
-        ]);
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/comment_report.html.twig', [
+                'commentReport' => $commentReport
+            ]);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
+        
     }
 }

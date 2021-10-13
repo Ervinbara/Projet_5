@@ -33,7 +33,13 @@ class AddUserController extends AbstractController
                 header('location: ?where=listUsers');
             }
         }
-
-        return $this->render('admin/addUser.html.twig', []);
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/addUser.html.twig', []);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
+        
     }
 }

@@ -50,6 +50,10 @@
             <a href="?where=administration" class="nav-link">Administration</a>
           </li> 
           {% endif %}
+
+          <li class="nav-item">
+            <a href="?where=formContact" class="nav-link">Contact</a>
+          </li>
           
           {% if app.security.isConnected %}
           <li class="nav-item">
@@ -103,10 +107,10 @@
               <li><a href="?where=allPosts">Articles</a></li>
               <li><a href="?where=registration">Registration</a></li>
               <li><a href="?where=login">Connexion</a></li>
+              <li><a href="?where=formContact">Contact</a></li>
               {% if app.security.isConnected and app.security.isAdmin %}
               <li><a href="?where=administration">Administration</a></li> 
               {% endif %}
-              {# <li><a href="?where=home">About us</a></li> #}
             </ul>
           </div> 
         </div>
@@ -122,10 +126,8 @@
 
           <div class="col-md-4 col-sm-6 col-xs-12">
             <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fab fa-facebook"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a class="dribbble" href="#"><i class="fab fa-dribbble"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>   
+              <li><a class="github" href="https://github.com/Ervinbara"><i class="fab fa-github"></i></a></li>
+              <li><a class="linkedin" href="https://www.linkedin.com/feed/"><i class="fab fa-linkedin"></i></a></li>   
             </ul>
           </div>
         </div>

@@ -16,7 +16,7 @@ class RegistrationController extends AbstractController
         if (!empty($_POST) && isset($_POST['forminscription'])) {
             // Faire une vérif si le compte existe déjà
             $userManager = new UserManager();
-            $username_exist = $userManager->username_exist($_POST['username']);
+            $username_exist = $userManager->username_exist($_POST['username'], $_POST['email']);
             
             // Renvoi 1, l'username existe déjà en base
             if($username_exist) {

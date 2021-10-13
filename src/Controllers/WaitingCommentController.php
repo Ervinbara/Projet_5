@@ -25,8 +25,16 @@ class WaitingCommentController extends AbstractController
         }
 
         $commentWait = $commentManager->getWaitingComment();
-        return $this->render('admin/waiting__comments_list.html.twig', [
-            'commentWait' => $commentWait 
-        ]);
+
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/waiting__comments_list.html.twig', [
+                'commentWait' => $commentWait 
+            ]);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
+        
     }
 }

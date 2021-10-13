@@ -28,9 +28,16 @@ class AddArticleController extends AbstractController
             $adminManager->add($_POST['titre'], $_POST['chapo'],$_POST['contenu'], $_POST['author'], $image);
             header('location: ?where=adminListPosts');
         }
-        return $this->render('admin/addPost.html.twig', [
-            'name' => 'Ervin'
-        ]);
+
+        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+            return $this->render('admin/addPost.html.twig', []);
+        }
+        // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
+        else{
+            return $this->render('default/home.html.twig', []);
+        }
+
+        
     }
 }
 
