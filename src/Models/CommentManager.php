@@ -7,6 +7,7 @@ use App\Models\Database;
 
 class CommentManager extends Database
 {
+    // Envoi d'un commentaire
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -15,6 +16,7 @@ class CommentManager extends Database
         return $stmt; 
     }
 
+    // Récupération de tout les commentaires
     public function getComments($postId)
     {
         $db = $this->dbConnect();
@@ -24,6 +26,7 @@ class CommentManager extends Database
         return $stmt->fetchAll();
     }
 
+    // Récupération des commentaires en attentes 
     public function getWaitingComment()
     {
          $db = $this->dbConnect();
@@ -32,7 +35,7 @@ class CommentManager extends Database
          return $stmt;
     }
     
-    // Récupère le compte de commentaire en fonction de chaque article
+    // Récupère le total de commentaire en fonction de chaque article
     public function countsComments($postId)
     {
         $db = $this->dbConnect();
@@ -44,6 +47,7 @@ class CommentManager extends Database
         return $stmt->fetch();
     }
     
+    // Signalement d'un commentaire
     public function reportComment($id_report)
     {
           $db = $this->dbConnect();
@@ -54,6 +58,7 @@ class CommentManager extends Database
       ]);
     }
 
+    // Annuler le fait qu'un commentaire soit signaler 
     public function cancelReport($id_report)
     {
           $db = $this->dbConnect();
@@ -64,6 +69,7 @@ class CommentManager extends Database
       ]);
     }
 
+    // Fonction de validation d'un commentaire en attente
     public function validComment($id_waiting)
     {
           $db = $this->dbConnect();
@@ -74,6 +80,7 @@ class CommentManager extends Database
       ]);
     }
 
+    // Récupération des commentaires signaler
     public function getCommentReport()
     {
          $db = $this->dbConnect();
@@ -82,6 +89,7 @@ class CommentManager extends Database
          return $stmt;
     }
 
+    // Compte le nombre de commentaire signaler
     public function countsCommentsReport()
     { 
         $db = $this->dbConnect();
@@ -93,6 +101,7 @@ class CommentManager extends Database
         return $stmt->fetch();
     }
 
+    // Compte le nombre de commentaire en attente
     public function countsCommentsWaiting()
     { 
         $db = $this->dbConnect();
@@ -104,6 +113,7 @@ class CommentManager extends Database
         return $stmt->fetch();
     }
 
+    // Suppression d'un commentaire
     public function deleteComment($commentId)
     {
         $db = $this->dbConnect();

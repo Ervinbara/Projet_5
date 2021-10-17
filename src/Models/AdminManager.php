@@ -8,17 +8,19 @@ use App\Models\Database;
 class AdminManager extends Database
 {
     
+    // Ajout d'article
     public function add($titre, $chapo, $contenu, $author, $image)
     {
         $db = $this->dbConnect();
 
         $sql = 'INSERT INTO articles (title, chapo, content, author, image, creation_date) VALUES (:title, :chapo, :content, :author, :image,  NOW())';
 
-        $req = $db->prepare($sql);
-        $req->execute(array(':title' => $titre, ':chapo' => $chapo, ':content' => $contenu, ':author' => $author, ':image' => $image));
-        return $req;
+        $stmt = $db->prepare($sql);
+        $stmt->execute(array(':title' => $titre, ':chapo' => $chapo, ':content' => $contenu, ':author' => $author, ':image' => $image));
+        return $stmt;
     }
- 
+    
+    // Update d'article
     public function modify($titre, $chapo, $contenu, $author, $image, $id)
     {
         $db = $this->dbConnect();
@@ -31,6 +33,7 @@ class AdminManager extends Database
         return $stmt->fetch();
     }
 
+    // Récupération de tout les articles
     public function getAllArticles()
     {
         $db = $this->dbConnect();
@@ -40,6 +43,7 @@ class AdminManager extends Database
         return $stmt;
     }
 
+    // Récupération des 3 derniers articles
     public function getLastArticles()
     {
         $db = $this->dbConnect();
@@ -49,6 +53,7 @@ class AdminManager extends Database
         return $stmt;
     }
     
+    // Récupération d'un article
     public function getPost($postId)
     {
         $db = $this->dbConnect();
@@ -60,9 +65,7 @@ class AdminManager extends Database
         return $post;
     }
     
-    /** Delete a user
-     * @param int $userId
-     */
+    // Suppression d'un article
     public function deletePost(int $postId): void
     {   
         $db = $this->dbConnect();
@@ -71,6 +74,8 @@ class AdminManager extends Database
         $stmt->execute(['postId' => $postId]);
     }
 
+
+    // Ajout d'image
     public function addImage($image, $titre){
         $tailleMax = 10000000;
         $extensions = array('jpg', 'jpeg', 'gif', 'png');
@@ -89,17 +94,8 @@ class AdminManager extends Database
                     return $file;
                 }
             }
-            else{
-                // TODO : Rediriger avec un message de session expliquant le problème
-                print('Mauvais format');
-            }
-        }
-        // TODO : Rediriger avec un message de session expliquant le problème
-        else{
-            print('pas bon');
         }
     }
-
     
 
 } 

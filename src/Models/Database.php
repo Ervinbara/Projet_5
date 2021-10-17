@@ -8,7 +8,7 @@ class Database
 {
     private static $db = null;
 
-    
+    // Initialisation de la connexion à la base de données
     protected function dbConnect():PDO
     {
         if(self::$db === null){

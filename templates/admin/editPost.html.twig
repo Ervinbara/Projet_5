@@ -2,7 +2,7 @@
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="../assets/css/detail_admin.css"/>
 {% endblock %}
-{# Faire un form plus propre  #}
+
 {% block content %}
 <header role="banner">
   <h1>Admin Panel</h1>
@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label>Image</label>
-                <input type="file" id="image" name="image"/>
+                <input type="file" name="image" accept=".png, .jpg, .jpeg"/>
             </div>
 
             <input class="btn btn-primary" type="submit" value="Modifier" name="updatePost" id="updatePost"/>
