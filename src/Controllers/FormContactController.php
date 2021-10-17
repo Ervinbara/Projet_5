@@ -2,10 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Factories\MailerFactory;
-use App\Models\UserManager;
-use App\Models\AdminManager;
 use App\Routing\AbstractController;
+use App\Services\MailerService;
 
 class FormContactController extends AbstractController
 {
@@ -16,14 +14,12 @@ class FormContactController extends AbstractController
     public function process():string{
         $message = NULL; 
         if (!empty($_POST) && isset($_POST['mail'])) { 
-            $mailerFactory = new MailerFactory();
+            $mailerFactory = new MailerService();
             $mailerFactory->sendMail($_POST['author_mail'],$_POST['sujet'],$_POST['contenu']);
             $message = "Message envoyé";
-            header('location: ?where=home');
-            exit();
-            // return $this->render('default/form_contact.html.twig', [
-            //     "message" => $message
-            // ]);
+            return $this->render('default/form_contact.html.twig', [
+                "message" => $message
+            ]);
         }
         return $this->render('default/form_contact.html.twig', []);
     }

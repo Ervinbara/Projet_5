@@ -105,8 +105,10 @@
             <ul class="footer-links">
               <li><a href="?where=home">Homepage</a></li>
               <li><a href="?where=allPosts">Articles</a></li>
+              {% if not app.security.isConnected %}
               <li><a href="?where=registration">Registration</a></li>
               <li><a href="?where=login">Connexion</a></li>
+              {% endif %}
               <li><a href="?where=formContact">Contact</a></li>
               {% if app.security.isConnected and app.security.isAdmin %}
               <li><a href="?where=administration">Administration</a></li> 

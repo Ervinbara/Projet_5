@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Factories;
+// Mailer PHP, permet l'envoi de mail 
+
+namespace App\Services;
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-class MailerFactory
+class MailerService
 {
     public function sendMail($author, $subject, $contenu){
-        $mail = new PHPMailer(TRUE);
+        $mail = new PHPMailer(True);
         $mail = new PHPMailer();
         $mail->IsSMTP(); 
         $mail->Mailer = "smtp";
 
-        $mail->SMTPDebug  = 1;  
-        $mail->SMTPAuth   = TRUE;
+        $mail->SMTPDebug  = False;  
+        $mail->SMTPAuth   = True;
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
         $mail->setFrom('lokidog1797@gmail.com', 'Loki');
@@ -27,18 +28,8 @@ class MailerFactory
         $mail->IsHTML(true);
         $mail->Subject = $subject;
         $content = "<b>Envoyer par : $author <br/><br/> $contenu </b>";
-
+ 
         $mail->MsgHTML($content); 
         $mail->Send();
-        // A voir pour mettre un try catch plutot
-        // if(!$mail->Send()) 
-        // {
-        //     echo "Error while sending Email.";
-        //     var_dump($mail);
-        // } 
-        // else
-        // {
-        //     echo "Email sent successfully";
-        // }
     }
 }

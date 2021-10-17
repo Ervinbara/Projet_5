@@ -14,11 +14,11 @@ class AddUserController extends AbstractController
     public function process():string{
         
         if (!empty($_POST) && isset($_POST['addUserForm'])) {
-            // Faire une vérif si le compte existe déjà
+            // Vérification si le nom d'utilisateur ou l'adresse email est déjà utilisé
             $userManager = new UserManager();
-            $username_exist = $userManager->username_exist($_POST['username']);
+            $username_exist = $userManager->username_exist($_POST['username'], $_POST['email']);
             
-            // Renvoi 1, l'username existe déjà en base
+            // Renvoi 1 si pseudo ou email existe déjà en base
             if($username_exist) {
                 header('location: ?where=addUser');
             }
