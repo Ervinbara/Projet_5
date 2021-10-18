@@ -18,6 +18,13 @@
     <form action="?where=addUser" method="POST">
     
     <h2>Création de compte</h2>
+
+    {% if message is not null %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+    {% endif %}
+
     <div class="form-group">
         <label>Adresse email</label>
         <input type="email" placeholder="Votre email" id="email" name="email" class="form-control" required>

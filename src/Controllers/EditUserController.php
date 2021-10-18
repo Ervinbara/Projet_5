@@ -15,6 +15,14 @@ class EditUserController extends AbstractController
         if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
             $userManager = new UserManager();
             // Récup l'user que l'on modifie de par son id
+            $username_exist = $userManager->usernameExist($_POST['username'], $_POST['email']);
+            if($username_exist) {
+                $message = "L'email ou le pseudo est déjà utilisé.";
+                return $this->render('admin/editUser.html.twig', [
+                    'message'=> $message
+                ]);
+            }
+            else{
             $user = $userManager->getUser($_GET['id']);
 
             if (!empty($_POST) && isset($_POST['editUserForm'])) {            
@@ -44,6 +52,7 @@ class EditUserController extends AbstractController
                 'user' => $user
             ]);
         }
+    }
     
     else
     {

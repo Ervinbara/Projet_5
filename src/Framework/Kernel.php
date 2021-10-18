@@ -22,8 +22,8 @@ class Kernel
         $this->security = new Security($this);
     }
 
-    function process(){
-        $controller = $this->router->find_controller();
+    public function process(){
+        $controller = $this->router->findController();
         print($controller->process());
     }
 }

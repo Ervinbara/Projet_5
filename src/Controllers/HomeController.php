@@ -16,8 +16,6 @@ class HomeController extends AbstractController
         $articles = $adminManager->getLastArticles();
         return $this->render('default/home.html.twig', [
             'articles' => $articles,
-            'name' => 'Ervin'
         ]);
     }
 }
-

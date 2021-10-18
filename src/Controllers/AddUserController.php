@@ -16,20 +16,22 @@ class AddUserController extends AbstractController
         if (!empty($_POST) && isset($_POST['addUserForm'])) {
             // Vérification si le nom d'utilisateur ou l'adresse email est déjà utilisé
             $userManager = new UserManager();
-            $username_exist = $userManager->username_exist($_POST['username'], $_POST['email']);
+            $username_exist = $userManager->usernameExist($_POST['username'], $_POST['email']);
             
             // Renvoi 1 si pseudo ou email existe déjà en base
             if($username_exist) {
-                header('location: ?where=addUser');
+                $message = "L'email ou le pseudo est déjà utilisé.";
+                return $this->render('admin/addUser.html.twig', [
+                    'message'=> $message
+                ]);
             }
-
             elseif($username_exist == 0){
                 $username = trim($_POST['username']);
                 $email = trim(htmlspecialchars($_POST['email']));
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $role = $_POST['role'];
                     
-                $userManager->new_account([$username,$password,$email,$role]);
+                $userManager->newAccount([$username,$password,$email,$role]);
                 header('location: ?where=listUsers');
             }
         }
