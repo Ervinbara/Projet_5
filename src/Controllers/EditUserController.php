@@ -21,7 +21,6 @@ class EditUserController extends AbstractController
                 return $this->render('admin/editUser.html.twig', [
                     'message'=> $message
                 ]);
-                // header('location: ?where=registration');
             }
             else{
             $user = $userManager->getUser($_GET['id']);

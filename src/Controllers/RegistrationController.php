@@ -24,9 +24,7 @@ class RegistrationController extends AbstractController
                 return $this->render('default/register.html.twig', [
                     'message'=> $message
                 ]);
-                // header('location: ?where=registration');
             }
-
             elseif($username_exist == 0){
                 $username = trim($_POST['username']);
                 $email = trim(htmlspecialchars($_POST['email']));
