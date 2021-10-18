@@ -7,7 +7,7 @@ use App\Models\Database;
 class UserManager extends Database
 {
     // Fonction de création d'un compte
-    public function new_account(array $userData)
+    public function newAccount(array $userData)
     {
         $db = $this->dbConnect();
         $sql = 'INSERT INTO users(username,password, email, role) VALUES(?,?,?,?)';
@@ -17,7 +17,7 @@ class UserManager extends Database
 
 
    // Fonction de vérification : Vérifie si une adresse email ou un pseudo est déjà affilié à un compte
-   public function username_exist($username, $email){       
+   public function usernameExist($username, $email){       
         $db = $this->dbConnect();
         $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
         $stmt->execute(['username' => $username, 'email' => $email]);

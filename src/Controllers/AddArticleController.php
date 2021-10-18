@@ -36,4 +36,3 @@ class AddArticleController extends AbstractController
         
     }
 }
-

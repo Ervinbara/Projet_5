@@ -34,7 +34,7 @@ class Router{
         }
     }
 
-    public function find_controller(){
+    public function findController(){
         $action = $this->getAction();  
 
         // Comment ça se fait que l'on peut utiliser isroute sans déclarer un AbstractController class

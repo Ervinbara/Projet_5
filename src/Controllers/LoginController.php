@@ -21,11 +21,9 @@ class LoginController extends AbstractController
                 $this->kernel->security->setUserConnected($user);
                 if($user['role'] == 'ADMIN'){
                     header('location: ?where=administration');
-                    exit();
                 }
                 else{
                     header('location: ?where=home');
-                    exit();
                 }
                 
             }
