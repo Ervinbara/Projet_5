@@ -10,7 +10,7 @@ class LogoutController extends AbstractController
         return $action === 'logout';
     } 
 
-    public function process():string{
+    public function process():void{
         $this->kernel->security->logout();
         header('location: ?where=home');
     }

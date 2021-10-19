@@ -21,7 +21,7 @@ abstract class AbstractController{
     // A quoi sert isroute ? Si une route est trouver ça renvoi True sinon False
     public abstract static function isroute(string $action):bool;
 
-    public abstract function process():string;
+    public abstract function process();
 
     public function render(string $path, $datas = [])
     {
