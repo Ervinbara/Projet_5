@@ -54,7 +54,6 @@ Etape 6 : Créer un utilisateur, lui donner le rôle "ADMIN" et supprimer l'util
 
 #Exécution en développement : 
 php -S localhost:8000 il sera disponible sur http://localhost:8000/
-En développement pour ne pas à avoir à passer par un serveur Web : 
 
 Librairies utilisées : 
 
