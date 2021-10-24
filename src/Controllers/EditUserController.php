@@ -23,7 +23,7 @@ class EditUserController extends AbstractController
                 ]);
             }
             else{
-            $user = $userManager->getUser($_GET['id']);
+                $user = $userManager->getUser($_GET['id']);
 
             if (!empty($_POST) && isset($_POST['editUserForm'])) {            
                 // Faire une vérif si le compte existe déjà

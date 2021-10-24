@@ -1,0 +1,66 @@
+Parcours Développeur d'application - PHP / Symfony
+Projet 5 OpenClassrooms - Créez votre premier blog en PHP
+
+# Titre Niveau 1 
+## ... 2
+
+SymfonyInsight : Platinum medal
+https://insight.symfony.com/projects/b2e63aae-c8f9-4c02-958e-fb4d30226d88
+
+L'objectif de ce projet est de développer un blog professionnel, avec un groupe de pages accesible aux "visiteurs/utilisateurs" et une autre partie uniquement accesible aux "Administrateurs".
+
+Actions possibles en fonctions des différents rôles : 
+
+Le visiteur (Non authentifié):
+
+- Inscription/Connexion
+- Accès à l'ensemble des articles
+- Lire les commentaires affiliés aux articles
+
+Utilisateur (authentifié):
+
+- Accès aux mêmes fonctionnalités que le visiteur
+- Ajout de commentaires/Signalement de commentaires
+- Envoi de mail à l'Administrateur
+
+Administrateur (authentifié et détient le rôle "ADMIN"):
+
+- Accès aux mêmes fonctionnalités que l'utilisateur.
+- Ajout/suppression/modification des utilisateurs.
+- Ajout/suppression/modification des articles.
+- Validation/Suppression des commentaires.
+
+Compte existant par défaut :
+
+- Administrateur:
+    - Identifiant: admin1@gmail.com ou admin1
+    - Mot de passe: admin1
+
+Prérequis : 
+- PHP version 7.3 minimum
+- Un système de gestion de base de données (SGBD : MySQL version 5.0.3 minimum)
+- Il faut composer et Git
+
+#Installation : 
+Etape 1 : Cloner le Repositary sur machine avec la commande : git clone https://github.com/Ervinbara/Projet_5.git
+
+Etape 2 : Lancer la commande : composer install
+
+Etape 3 : Créer une base de données sur votre SGBD et importer le fichier projet_5.sql
+
+Etape 4 : Remplir le fichier config.php
+
+Etape 6 : Créer un utilisateur, lui donner le rôle "ADMIN" et supprimer l'utilisateur fourni par défault
+
+#Exécution en développement : 
+php -S localhost:8000 il sera disponible sur http://localhost:8000/
+En développement pour ne pas à avoir à passer par un serveur Web : 
+
+Librairies utilisées : 
+
+- Bootstrap
+- Twig
+- PHPMAILER
+
+Auteur
+Bara Ervin
