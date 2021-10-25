@@ -1,9 +1,6 @@
 Parcours Développeur d'application - PHP / Symfony
 Projet 5 OpenClassrooms - Créez votre premier blog en PHP
 
-# Titre Niveau 1 
-## ... 2
-
 SymfonyInsight : Platinum medal
 https://insight.symfony.com/projects/b2e63aae-c8f9-4c02-958e-fb4d30226d88
 
@@ -52,8 +49,8 @@ Etape 4 : Remplir le fichier config.php
 
 Etape 6 : Créer un utilisateur, lui donner le rôle "ADMIN" et supprimer l'utilisateur fourni par défault
 
-#Exécution en développement : 
-php -S localhost:8000 il sera disponible sur http://localhost:8000/
+Exécution en développement : 
+php -S localhost:8000,  le projet sera disponible sur http://localhost:8000/
 
 Librairies utilisées : 
 
