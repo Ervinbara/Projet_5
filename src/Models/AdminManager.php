@@ -13,10 +13,10 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
 
-        $sql = 'INSERT INTO articles (title, chapo, content, author, image, creation_date) VALUES (:title, :chapo, :content, :author, :image,  NOW())';
+        $sql = 'INSERT INTO articles (title, chapo, content, user_id, image, creation_date) VALUES (:title, :chapo, :content, :user_id, :image,  NOW())';
 
         $stmt = $db->prepare($sql);
-        $stmt->execute(array(':title' => $titre, ':chapo' => $chapo, ':content' => $contenu, ':author' => $author, ':image' => $image));
+        $stmt->execute(array(':title' => $titre, ':chapo' => $chapo, ':content' => $contenu, ':user_id' => $author, ':image' => $image));
         return $stmt;
     }
     
