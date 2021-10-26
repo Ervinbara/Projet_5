@@ -6,22 +6,23 @@ use Twig\Environment;
 use App\Framework\Kernel;
 use Twig\Loader\FilesystemLoader;
 
-
-abstract class AbstractController{
+abstract class AbstractController
+{
     
     /**
      * @var Kernel
      */
     protected $kernel;
 
-    public function __construct($kernel){
+    public function __construct($kernel)
+    {
         $this->kernel = $kernel;
     }
 
     // A quoi sert isroute ? Si une route est trouver ça renvoi True sinon False
-    public abstract static function isroute(string $action):bool;
+    abstract public static function isroute(string $action):bool;
 
-    public abstract function process();
+    abstract public function process();
 
     public function render(string $path, $datas = [])
     {
@@ -34,6 +35,6 @@ abstract class AbstractController{
         
         $datas['app'] = $this->kernel;
         // Renvoi nos données
-        return $twig->render($path,$datas);
+        return $twig->render($path, $datas);
     }
 }

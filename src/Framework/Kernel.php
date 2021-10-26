@@ -17,12 +17,14 @@ class Kernel
      */
     public $security;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->router = new Router($this);
         $this->security = new Security($this);
     }
 
-    public function process(){
+    public function process()
+    {
         $controller = $this->router->findController();
         print($controller->process());
     }

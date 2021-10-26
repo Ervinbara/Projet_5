@@ -7,15 +7,17 @@ use App\Services\MailerService;
 
 class FormContactController extends AbstractController
 {
-    public static function isroute(string $action):bool{
+    public static function isroute(string $action):bool
+    {
         return $action === 'formContact';
-    } 
+    }
 
-    public function process():string{
-        $message = NULL; 
-        if (!empty($_POST) && isset($_POST['mail'])) { 
+    public function process():string
+    {
+        $message = null;
+        if (!empty($_POST) && isset($_POST['mail'])) {
             $mailerFactory = new MailerService();
-            $mailerFactory->sendMail($_POST['author_mail'],$_POST['sujet'],$_POST['contenu']);
+            $mailerFactory->sendMail($_POST['author_mail'], $_POST['sujet'], $_POST['contenu']);
             $message = "Message envoyé";
             return $this->render('default/form_contact.html.twig', [
                 "message" => $message

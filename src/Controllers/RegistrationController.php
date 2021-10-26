@@ -7,25 +7,26 @@ use App\Routing\AbstractController;
 
 class RegistrationController extends AbstractController
 {
-    public static function isroute(string $action):bool{
+    public static function isroute(string $action):bool
+    {
         return $action === 'registration';
     }
 
-    public function process():string{
-        $message = NULL;
+    public function process():string
+    {
+        $message = null;
         if (!empty($_POST) && isset($_POST['forminscription'])) {
             // Faire une vérif si le compte existe déjà
             $userManager = new UserManager();
             $username_exist = $userManager->usernameExist($_POST['username'], $_POST['email']);
             
             // Renvoi 1, l'username existe déjà en base
-            if($username_exist) {
+            if ($username_exist) {
                 $message = "L'email ou le pseudo est déjà utilisé.";
                 return $this->render('default/register.html.twig', [
                     'message'=> $message
                 ]);
-            }
-            elseif($username_exist == 0){
+            } elseif ($username_exist == 0) {
                 $username = trim($_POST['username']);
                 $email = trim(htmlspecialchars($_POST['email']));
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);

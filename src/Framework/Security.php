@@ -13,31 +13,37 @@ class Security
      */
     private $kernel;
 
-    public function __construct(Kernel $kernel){
+    public function __construct(Kernel $kernel)
+    {
         session_start();
         $this->kernel = $kernel;
     }
 
-    public function setUserConnected($user){
+    public function setUserConnected($user)
+    {
         $_SESSION['user'] = $user;
     }
 
 
-    public function isConnected(){
-        return isset($_SESSION['user']);        
+    public function isConnected()
+    {
+        return isset($_SESSION['user']);
     }
 
-    public function getUserConnected(){
-        return $_SESSION['user'];        
+    public function getUserConnected()
+    {
+        return $_SESSION['user'];
     }
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return $_SESSION['user']['role'] === 'ADMIN';
     }
 
 
 
-    public function logout(){
+    public function logout()
+    {
         session_unset();
         session_destroy();
     }
