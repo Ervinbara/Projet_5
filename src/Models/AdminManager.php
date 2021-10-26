@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models; 
+namespace App\Models;
 
 use PDOException;
 use App\Models\Database;
@@ -72,7 +72,7 @@ class AdminManager extends Database
     
     // Suppression d'un article
     public function deletePost(int $postId): void
-    {   
+    {
         $db = $this->dbConnect();
         $sql = 'DELETE FROM articles WHERE id = :postId';
         $stmt = $db->prepare($sql);
@@ -81,26 +81,25 @@ class AdminManager extends Database
 
 
     // Ajout d'image
-    public function addImage($image, $titre){
+    public function addImage($image, $titre)
+    {
         $tailleMax = 10000000;
         $extensions = array('jpg', 'jpeg', 'gif', 'png');
-        if($image['size'] <= $tailleMax){
+        if ($image['size'] <= $tailleMax) {
             $extensionUpload = strtolower(substr(strrchr($image['name'], '.'), 1));
             // On vérifie si le texte contient une extension valide
-            if(in_array($extensionUpload, $extensions)){
+            if (in_array($extensionUpload, $extensions)) {
                 $chemin = "./images/articles/".$titre.".".$extensionUpload;
-            // On déplace l'image du dossier temporaire du serveur sur laquelle elle est stockée, dans
-            // notre dossier articles
-            $resultat = move_uploaded_file($image['tmp_name'], $chemin);
-            // Si l'image à bien été déplacé on stocke le chemin de l'image dans une variable 
-            // que l'on va envoyer en base de données
-                if($resultat) {
+                // On déplace l'image du dossier temporaire du serveur sur laquelle elle est stockée, dans
+                // notre dossier articles
+                $resultat = move_uploaded_file($image['tmp_name'], $chemin);
+                // Si l'image à bien été déplacé on stocke le chemin de l'image dans une variable
+                // que l'on va envoyer en base de données
+                if ($resultat) {
                     $file = $titre.".".$extensionUpload;
                     return $file;
                 }
             }
         }
     }
-    
-
-} 
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models; 
+namespace App\Models;
 
 use App\Models\Database;
 
@@ -16,15 +16,15 @@ class UserManager extends Database
     }
 
 
-   // Fonction de vérification : Vérifie si une adresse email ou un pseudo est déjà affilié à un compte
-   public function usernameExist($username, $email){       
+    // Fonction de vérification : Vérifie si une adresse email ou un pseudo est déjà affilié à un compte
+    public function usernameExist($username, $email)
+    {
         $db = $this->dbConnect();
         $stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE username = :username OR email = :email");
         $stmt->execute(['username' => $username, 'email' => $email]);
 
         $user_exist = $stmt->fetchColumn();
         return $user_exist;
-    
     }
 
     // Récupération de tout les utilisateurs
@@ -32,7 +32,7 @@ class UserManager extends Database
     {
         $db = $this->dbConnect();
         $sql = $db->prepare('SELECT * FROM users');
-        $sql->execute(); 
+        $sql->execute();
         return $sql;
     }
 
@@ -56,7 +56,7 @@ class UserManager extends Database
         return $stmt->fetch();
     }
 
-    // Fonction de modification d'un utilisateur 
+    // Fonction de modification d'un utilisateur
     public function updateUser($username, $email, $role, $id)
     {
         $db = $this->dbConnect();
@@ -66,17 +66,15 @@ class UserManager extends Database
         $stmt = $db->prepare($sql);
         $stmt->execute($parameters);
         return $stmt->fetch();
-     }
+    }
 
     
     // Suppression d'un utilisateur
     public function deleteUser(int $userId): void
-    {   
+    {
         $db = $this->dbConnect();
         $sql = 'DELETE FROM users WHERE id = :userId';
         $stmt = $db->prepare($sql);
         $stmt->execute(['userId' => $userId]);
     }
-
-        
 }

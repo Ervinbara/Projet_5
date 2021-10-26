@@ -7,23 +7,24 @@ use App\Routing\AbstractController;
 
 class AdminArticlesController extends AbstractController
 {
-    public static function isroute(string $action):bool{
+    public static function isroute(string $action):bool
+    {
         return $action === 'adminListPosts';
     }
 
-    public function process():string{
+    public function process():string
+    {
         $adminManager = new AdminManager();
         $articles = $adminManager->getAllArticles();
 
-        if($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()){
+        if ($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()) {
             return $this->render('admin/admin_list_posts.html.twig', [
                 'articles' => $articles
             ]);
         }
         // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
-        else{
+        else {
             return $this->render('default/home.html.twig', []);
         }
-        
     }
 }

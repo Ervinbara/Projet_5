@@ -11,11 +11,13 @@ class Database
     // Initialisation de la connexion à la base de données
     protected function dbConnect():PDO
     {
-        if(self::$db === null){
-            self::$db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET,
-            DB_USER, DB_PASS);
+        if (self::$db === null) {
+            self::$db = new PDO(
+                'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET,
+                DB_USER,
+                DB_PASS
+            );
         }
         return self::$db;
-    }  
-
+    }
 }

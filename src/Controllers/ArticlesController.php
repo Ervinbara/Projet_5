@@ -7,11 +7,13 @@ use App\Routing\AbstractController;
 
 class ArticlesController extends AbstractController
 {
-    public static function isroute(string $action):bool{
+    public static function isroute(string $action):bool
+    {
         return $action === 'allPosts';
     }
 
-    public function process():string{
+    public function process():string
+    {
         $adminManager = new AdminManager();
         $articles = $adminManager->getAllArticles();
         return $this->render('default/all_posts.html.twig', [

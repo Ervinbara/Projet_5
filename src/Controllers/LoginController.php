@@ -7,25 +7,25 @@ use App\Routing\AbstractController;
 
 class LoginController extends AbstractController
 {
-    public static function isroute(string $action):bool{
+    public static function isroute(string $action):bool
+    {
         return $action === 'login';
-    } 
+    }
 
-    public function process():string{
-        $message = NULL;
+    public function process():string
+    {
+        $message = null;
  
         if (!empty($_POST) && isset($_POST['formLogin'])) {
             $userManager = new UserManager();
             $user = $userManager->getUserByUsernameOrEmail($_POST['username']);
-            if(($user !== false) && (password_verify($_POST['password'], $user['password']))){
+            if (($user !== false) && (password_verify($_POST['password'], $user['password']))) {
                 $this->kernel->security->setUserConnected($user);
-                if($user['role'] == 'ADMIN'){
+                if ($user['role'] == 'ADMIN') {
                     header('location: ?where=administration');
-                }
-                else{
+                } else {
                     header('location: ?where=home');
                 }
-                
             }
             $message = "L'utilisateur n'a pas pu être connecté";
         }
