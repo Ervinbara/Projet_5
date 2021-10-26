@@ -20,7 +20,8 @@ class CommentManager extends Database
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $stmt = $db->prepare('SELECT id, user_id,post_id, comment, report, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = :postId AND waiting = 0 ORDER BY comment_date DESC');
+        $stmt = $db->prepare('SELECT u.username,c.id,c.report,c.comment,DATE_FORMAT(c.comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments c  
+        JOIN users u ON u.id = c.user_id WHERE post_id = :postId AND waiting = 0 ORDER BY comment_date DESC');
         $stmt->execute(['postId' => $postId]);
 
         return $stmt->fetchAll();
@@ -30,7 +31,8 @@ class CommentManager extends Database
     public function getWaitingComment()
     {
          $db = $this->dbConnect();
-         $stmt = $db->prepare('SELECT author,id,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE waiting = 1');
+         $stmt = $db->prepare('SELECT u.username,c.id,c.comment,DATE_FORMAT(c.comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments c  
+         JOIN users u ON u.id = c.user_id  WHERE waiting = 1');
          $stmt->execute();
          return $stmt;
     }
@@ -84,7 +86,8 @@ class CommentManager extends Database
     public function getCommentReport()
     {
          $db = $this->dbConnect();
-         $stmt = $db->prepare('SELECT author,id,comment,DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE report = 1');
+         $stmt = $db->prepare('SELECT u.username,c.id,c.comment,DATE_FORMAT(c.comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments c  
+         JOIN users u ON u.id = c.user_id WHERE c.report = 1');
          $stmt->execute();
          return $stmt;
     }
