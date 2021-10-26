@@ -13,10 +13,10 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
 
-        $sql = 'INSERT INTO articles (title, chapo, content, author, image, creation_date) VALUES (:title, :chapo, :content, :author, :image,  NOW())';
+        $sql = 'INSERT INTO articles (title, chapo, content, user_id, image, creation_date) VALUES (:title, :chapo, :content, :user_id, :image,  NOW())';
 
         $stmt = $db->prepare($sql);
-        $stmt->execute(array(':title' => $titre, ':chapo' => $chapo, ':content' => $contenu, ':author' => $author, ':image' => $image));
+        $stmt->execute(array(':title' => $titre, ':chapo' => $chapo, ':content' => $contenu, ':user_id' => $author, ':image' => $image));
         return $stmt;
     }
     
@@ -37,17 +37,20 @@ class AdminManager extends Database
     public function getAllArticles()
     {
         $db = $this->dbConnect();
-        $sql = 'SELECT id, title, chapo, content, author, image, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles ORDER BY creation_date DESC';
+        $sql = 'SELECT a.id, a.title, a.chapo, a.content, u.username, a.image, DATE_FORMAT(a.creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles a
+        JOIN users u ON u.id = a.user_id  ORDER BY creation_date DESC';
         $stmt = $db->prepare($sql);
         $stmt->execute();
         return $stmt;
     }
 
+
     // Récupération des 3 derniers articles
     public function getLastArticles()
     {
         $db = $this->dbConnect();
-        $sql = 'SELECT id, title, chapo, content, author, image, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles ORDER BY creation_date DESC LIMIT 0, 3';
+        $sql = 'SELECT a.id, a.title, a.chapo, a.content, u.username, a.image, DATE_FORMAT(a.creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles a
+        JOIN users u ON u.id = a.user_id  ORDER BY creation_date DESC LIMIT 0,3';
         $stmt = $db->prepare($sql);
         $stmt->execute();
         return $stmt;
@@ -57,10 +60,12 @@ class AdminManager extends Database
     public function getPost($postId)
     {
         $db = $this->dbConnect();
-        $sql = 'SELECT id, title, chapo, content, author, image,  DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles WHERE id = :postId';
+        $sql = 'SELECT a.id, a.title, a.chapo, a.content, u.username, a.image, DATE_FORMAT(a.creation_date, \'%d/%m/%Y à %Hh%imin\') AS creation_date_fr FROM articles a
+        JOIN users u ON u.id = a.user_id WHERE a.id = :postId';
         $stmt = $db->prepare($sql);
         $stmt->execute(['postId' => $postId]);
         $post = $stmt->fetch();
+
 
         return $post;
     }

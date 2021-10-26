@@ -14,7 +14,7 @@
         <h2 class="card_title">{{article.title}}</h2>
         <p>{{article.chapo}}</p>
         <p>{{article.content}}</p>
-        <p class="card_author author_link">Auteur : {{article.author}} <br/>le {{article.creation_date_fr}}</p>
+        <p class="card_author author_link">Auteur : {{article.username}} <br/>le {{article.creation_date_fr}}</p>
     </div>
 
     <hr>
@@ -27,7 +27,7 @@
                     <label>Contenu</label>
                     <textarea id="coms" name="coms" placeholder="Commentaire" class="form-control" required minlength="1" maxlength="450"></textarea> 
                 </div> 
-                <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.username}}" />
+                <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.id}}" />
                 <input class="btn btn-primary" type="submit" value="Poster" name="comment" id="comment"/>
         </form>
     {% else %}
@@ -38,7 +38,7 @@
  
     {% for comment in comments %}
     <div class="comment">
-      <div class='author'>Auteur : {{comment.author}}</div>
+      <div class='author'>Auteur : {{comment.username}}</div>
       <div class='comment'>Commentaire : {{comment.comment}}</div>
       <div class='date'>Le : {{comment.comment_date_fr}}</div>
 
