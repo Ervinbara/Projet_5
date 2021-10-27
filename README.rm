@@ -41,7 +41,7 @@ Prérequis :
 #Installation : 
 Etape 1 : Cloner le Repositary sur machine avec la commande : git clone https://github.com/Ervinbara/Projet_5.git
 
-Etape 2 : Lancer la commande : composer install
+Etape 2 : Lancer la commande : cd Projet_5 pour vous rendre dans le projet, puis : composer install
 
 Etape 3 : Créer une base de données sur votre SGBD et importer le fichier projet_5.sql
 
