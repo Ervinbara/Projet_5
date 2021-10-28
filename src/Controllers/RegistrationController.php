@@ -20,7 +20,7 @@ class RegistrationController extends AbstractController
             $userManager = new UserManager();
             $username_exist = $userManager->usernameExist($_POST['username'], $_POST['email']);
             
-            // Renvoi 1, l'username existe déjà en base
+            // Renvoi 1, l'username existe déjà en base et 0 si il n'existe pas
             if ($username_exist) {
                 $message = "L'email ou le pseudo est déjà utilisé.";
                 return $this->render('default/register.html.twig', [

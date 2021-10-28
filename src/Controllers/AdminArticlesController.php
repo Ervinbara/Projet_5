@@ -24,7 +24,7 @@ class AdminArticlesController extends AbstractController
         }
         // Si ce n'est pas l'administrateur, il sera redirigé vers la page d'accueil
         else {
-            return $this->render('default/home.html.twig', []);
+            header('location: ?where=home');
         }
     }
 }

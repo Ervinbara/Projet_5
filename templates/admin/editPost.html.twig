@@ -37,9 +37,15 @@
 
 
             <div class="form-group">
-                <label>Auteur</label>
-                <input type="text" name="author" placeholder="Auteur" id="author" class="form-control" value="{{post.author}}"/>
-            </div>
+                <label>Auteur de l'article</label>
+                <input type="text" disabled="disabled" class="form-control" value="{{post.username}}"/>
+                <label>Modifier l'auteur de l'article</label>
+                <select name="author" id="author">
+                    {% for user in users %}
+                        <option name="author" id="author" class="form-control"  value="{{user.id}}"selected>{{user.username}}</option>
+                    {% endfor %}
+                </select> 
+            </div> 
 
             <div class="form-group">
                 <label>Image</label>

@@ -25,12 +25,12 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
 
-        $sql = ('UPDATE articles SET title = :title , chapo = :chapo , content = :content , author = :author, image = :image WHERE id = :id');
-        $parameters = ['title' => $titre, 'chapo' => $chapo, 'content' => $contenu, 'author' => $author, 'image' => $image, 'id' => $id];
+        $sql = ('UPDATE articles SET title = :title , chapo = :chapo , content = :content , user_id = :user_id, image = :image WHERE id = :id');
+        $parameters = ['title' => $titre, 'chapo' => $chapo, 'content' => $contenu, 'user_id' => $author, 'image' => $image, 'id' => $id];
         
-        $stmt = $db->prepare($sql);
+        $stmt = $db->prepare($sql); 
         $stmt->execute($parameters);
-        return $stmt->fetch();
+        return $stmt->fetch(); 
     }
 
     // Récupération de tout les articles

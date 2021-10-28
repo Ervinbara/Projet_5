@@ -42,7 +42,7 @@ class EditUserController extends AbstractController
                 'user' => $user
             ]);
         } else {
-            return $this->render('default/home.html.twig', []);
+            header('location: ?where=home');
         }
     }
 }
