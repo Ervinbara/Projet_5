@@ -52,7 +52,7 @@ catch(\Throwable $e){
     // Permet de logger dans le système standard de php
     error_log($e->getMessage(),0);
     // Décommenter uniquement en dev pour afficher les erreur dans la page => 
-    throw $e;
+    // throw $e;
     http_response_code(500);
     include("500.html");
 }
