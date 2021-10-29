@@ -30,7 +30,7 @@
                 <input type="HIDDEN" id="author" name="author" value="{{app.security.getUserConnected.id}}" />
                 <input class="btn btn-primary" type="submit" value="Poster" name="comment" id="comment"/>
         </form>
-    {# {% else %}
+    {% else %}
         <h3>Pour laisser un commentaire, veuillez vous connecter.</h3> 
         <a href="?where=login">Login</a> <br/>
         <a href="?where=registration">Pas de compte ?</a>
@@ -55,7 +55,7 @@
       </form>
     </div>
 
-    {% endfor %} #}
+    {% endfor %}
 
   
 {% endblock %}
