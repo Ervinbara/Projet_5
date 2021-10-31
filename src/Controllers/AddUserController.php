@@ -12,7 +12,7 @@ class AddUserController extends AbstractController
         return $action === 'addUser';
     }
 
-    public function process():string
+    public function process()
     {
         if (!empty($_POST) && isset($_POST['addUserForm'])) {
             // Vérification si le nom d'utilisateur ou l'adresse email est déjà utilisé

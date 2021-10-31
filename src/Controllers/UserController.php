@@ -12,7 +12,7 @@ class UserController extends AbstractController
         return $action === 'listUsers';
     }
 
-    public function process():string
+    public function process()
     {
         $userManager = new UserManager();
         $users = $userManager->getUsers();
