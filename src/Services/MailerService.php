@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 class MailerService
 {
-    public function sendMail($author, $subject, $contenu)
+    public function sendMail($author_mail, $subject, $contenu, $author_lastname, $author_firstname)
     {
         $mail = new PHPMailer(true);
         $mail = new PHPMailer();
@@ -28,7 +28,7 @@ class MailerService
         $mail->addAddress(ADD_ADRESSE);
         $mail->IsHTML(true);
         $mail->Subject = $subject;
-        $content = "<b>Envoyer par : $author <br/><br/> $contenu </b>";
+        $content = "<b>Envoyer par : $author_lastname $author_firstname<br/> Adresse email : $author_mail <br/><br/> Contenu : <br/>$contenu </b>";
  
         $mail->MsgHTML($content);
         $mail->Send();

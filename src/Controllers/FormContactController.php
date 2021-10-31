@@ -17,7 +17,7 @@ class FormContactController extends AbstractController
         $message = null;
         if (!empty($_POST) && isset($_POST['mail'])) {
             $mailerFactory = new MailerService();
-            $mailerFactory->sendMail($_POST['author_mail'], $_POST['sujet'], $_POST['contenu']);
+            $mailerFactory->sendMail($_POST['author_mail'], $_POST['sujet'], $_POST['contenu'], $_POST['nom'],$_POST['prenom']);
             $message = "Message envoyé";
             return $this->render('default/form_contact.html.twig', [
                 "message" => $message
