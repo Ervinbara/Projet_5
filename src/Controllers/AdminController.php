@@ -11,7 +11,7 @@ class AdminController extends AbstractController
         return $action === 'administration';
     }
 
-    public function process():string
+    public function process()
     {
         // Si l'administrateur est connecté, il pourra accéder à l'espace administration
         if ($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()) {

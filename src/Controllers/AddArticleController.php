@@ -12,7 +12,7 @@ class AddArticleController extends AbstractController
         return $action === 'addPost';
     }
 
-    public function process():string
+    public function process()
     {
         if (!empty($_POST) && isset($_POST['addPost'])) {
             $adminManager = new AdminManager();

@@ -12,7 +12,7 @@ class CommentReportController extends AbstractController
         return $action === 'commentReport';
     }
 
-    public function process():string
+    public function process()
     {
         $commentManager = new CommentManager();
         $commentReport = $commentManager->getCommentReport();
