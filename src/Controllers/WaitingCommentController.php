@@ -12,7 +12,7 @@ class WaitingCommentController extends AbstractController
         return $action === 'waitingComment';
     }
 
-    public function process():string
+    public function process()
     {
         $commentManager = new CommentManager();
 

@@ -12,7 +12,7 @@ class EditUserController extends AbstractController
         return $action === 'editUser';
     }
 
-    public function process():string
+    public function process()
     {
         if ($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()) {
             $userManager = new UserManager();

@@ -13,7 +13,7 @@ class EditArticleController extends AbstractController
         return $action === 'editPost';
     }
  
-    public function process():string
+    public function process()
     {
         if ($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()) {
             $adminManager = new AdminManager();

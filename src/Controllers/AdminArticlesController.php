@@ -12,7 +12,7 @@ class AdminArticlesController extends AbstractController
         return $action === 'adminListPosts';
     }
 
-    public function process():string
+    public function process()
     {
         $adminManager = new AdminManager();
         $articles = $adminManager->getAllArticles();
