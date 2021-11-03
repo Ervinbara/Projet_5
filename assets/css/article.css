@@ -9,7 +9,6 @@
 }
 
 #ancre{
-    overflow-y: scroll;
     scroll-behavior: smooth;
 }
 .container {

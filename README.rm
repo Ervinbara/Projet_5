@@ -4,7 +4,7 @@ Projet 5 OpenClassrooms - Créez votre premier blog en PHP
 SymfonyInsight : Platinum medal
 https://insight.symfony.com/projects/b2e63aae-c8f9-4c02-958e-fb4d30226d88
 
-L'objectif de ce projet est de développer un blog professionnel, avec un groupe de pages accesible aux "visiteurs/utilisateurs" et une autre partie uniquement accesible aux "Administrateurs".
+L'objectif de ce projet est de développer un blog professionnel, avec un groupe de pages accesible aux "visiteurs/utilisateurs" et une autre partie uniquement accesible aux "administrateurs".
 
 Actions possibles en fonctions des différents rôles : 
 
@@ -36,9 +36,10 @@ Compte existant par défaut :
 Prérequis : 
 - PHP version 7.3 minimum
 - Un système de gestion de base de données (SGBD : MySQL version 5.0.3 minimum)
-- Il faut composer et Git
+- Il faut Composer et Git
 
-#Installation : 
+Installation : 
+
 Etape 1 : Cloner le Repositary sur machine avec la commande : git clone https://github.com/Ervinbara/Projet_5.git
 
 Etape 2 : Lancer la commande : cd Projet_5 pour vous rendre dans le projet, puis : composer install
@@ -47,16 +48,16 @@ Etape 3 : Créer une base de données sur votre SGBD et importer le fichier proj
 
 Etape 4 : Remplir le fichier config.php
 
-Etape 6 : Créer un utilisateur, lui donner le rôle "ADMIN" et supprimer l'utilisateur fourni par défault
+Etape 6 : Créer un utilisateur, lui donner le rôle "ADMIN" et supprimer l'utilisateur fourni par défaut
 
 Exécution en développement : 
 php -S localhost:8000,  le projet sera disponible sur http://localhost:8000/
 
 Librairies utilisées : 
 
-- Bootstrap
-- Twig
-- PHPMAILER
+- Bootstrap (Pour le visuel)
+- Twig (Moteur de template)
+- PHPMAILER (Envoi de mail)
 
 Auteur
 Bara Ervin
