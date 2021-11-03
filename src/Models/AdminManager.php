@@ -25,7 +25,7 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
 
-        $sql = ('UPDATE articles SET title = :title , chapo = :chapo , content = :content , user_id = :user_id, image = :image WHERE id = :id');
+        $sql = ('UPDATE articles SET title = :title , chapo = :chapo , content = :content , user_id = :user_id, image = :image, creation_date = NOW() WHERE id = :id');
         $parameters = ['title' => $titre, 'chapo' => $chapo, 'content' => $contenu, 'user_id' => $author, 'image' => $image, 'id' => $id];
         
         $stmt = $db->prepare($sql); 
