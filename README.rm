@@ -51,6 +51,7 @@ Etape 4 : Remplir le fichier config.php
 Etape 6 : Créer un utilisateur, lui donner le rôle "ADMIN" et supprimer l'utilisateur fourni par défaut
 
 Exécution en développement : 
+Faire un cd public, pour se mettre dans le dossier public
 php -S localhost:8000,  le projet sera disponible sur http://localhost:8000/
 
 Librairies utilisées : 
