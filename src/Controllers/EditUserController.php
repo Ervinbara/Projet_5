@@ -20,9 +20,11 @@ class EditUserController extends AbstractController
             if (!empty($_POST) && isset($_POST['editUserForm'])) {
                 // Faire une vérif si le compte existe déjà
                 $checkUsername = $userManager->getUserByUsernameOrEmail($_POST['username']);
+                $checkEmail = $userManager->getUserByUsernameOrEmail($_POST['email']);
+                $username_exist = $userManager->usernameExist($_POST['username'], $_POST['email']);
                 // Renvoi 1, l'username existe déjà en base
-                if ($checkUsername !== false && $checkUsername['id'] !== $user['id']) {
-                    header('location: ?where=editUser');
+                if ($checkUsername !== false  && $checkUsername['id'] !== $user['id']) {
+                    header('location: ?where=editUser&id='.$_GET['id']);
                 } else {
                     $username = trim($_POST['username']);
                     $email = trim(htmlspecialchars($_POST['email']));

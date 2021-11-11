@@ -46,7 +46,7 @@
         <input type="HIDDEN" id="comment_id" name="comment_id" value="{{comment.id}}" />
 
         {% if comment.report == 1 %}
-            <p class="commentReport">Commentaire signaler</p>
+            <p class="commentReport">Commentaire signalé</p>
         {% else %}
             {% if app.security.isConnected %}
             <input class="btn btn-danger" type="submit" id="report" name="report" value="Signaler" />

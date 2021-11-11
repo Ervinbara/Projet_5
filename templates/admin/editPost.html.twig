@@ -39,8 +39,8 @@
             <div class="form-group">
                 <label>Auteur de l'article</label>
                 <input type="text" disabled="disabled" class="form-control" value="{{post.username}}"/>
-                <label>Modifier l'auteur de l'article</label>
-                <select name="author" id="author">
+                <label>Choix de l'auteur</label>
+                <select name="author" id="author"> 
                     {% for user in users %}
                         <option name="author" id="author" class="form-control"  value="{{user.id}}"selected>{{user.username}}</option>
                     {% endfor %}

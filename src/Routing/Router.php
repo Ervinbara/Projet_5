@@ -40,11 +40,8 @@ class Router
     {
         $action = $this->getAction();
 
-        // Comment ça se fait que l'on peut utiliser isroute sans déclarer un AbstractController class
-        // Sûrement parce que les controllers extend l'AbstractController à voir...
         foreach ($this->controllers as $controller) {
             if ($controller::isroute($action)) {
-                // A Revoir
                 return new $controller($this->kernel);
             }
         }
