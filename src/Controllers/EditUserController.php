@@ -14,6 +14,7 @@ class EditUserController extends AbstractController
 
     public function process()
     {
+        $message = NULL;
         if ($this->kernel->security->isConnected() && $this->kernel->security->isAdmin()) {
             $userManager = new UserManager();
             $user = $userManager->getUser($_GET['id']);
@@ -24,8 +25,20 @@ class EditUserController extends AbstractController
                 $username_exist = $userManager->usernameExist($_POST['username'], $_POST['email']);
                 // Renvoi 1, l'username existe déjà en base
                 if ($checkUsername !== false  && $checkUsername['id'] !== $user['id']) {
-                    header('location: ?where=editUser&id='.$_GET['id']);
-                } else {
+                    $message = "Le pseudo est déjà utilisé";
+                    return $this->render('admin/editUser.html.twig', [
+                        'user' => $user,
+                        'message' => $message
+                    ]);
+                } 
+                elseif($checkEmail !== false  && $checkEmail['id'] !== $user['id']){
+                    $message = "L'adresse email est déjà utilisé";
+                    return $this->render('admin/editUser.html.twig', [
+                        'user' => $user,
+                        'message' => $message
+                    ]);
+                }
+                else {
                     $username = trim($_POST['username']);
                     $email = trim(htmlspecialchars($_POST['email']));
                     $role = $_POST['role'];
