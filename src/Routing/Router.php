@@ -35,9 +35,10 @@ class Router
             throw new \Exception("La variable $controller n'est pas du type AbstractController");
         }
     }
-
+    
     public function findController()
     {
+        // Vérifie si la route correspond à l'action que je recherche
         $action = $this->getAction();
 
         foreach ($this->controllers as $controller) {
